@@ -4,8 +4,13 @@ This is a project that was created to consolidate the random controls I have to 
 ### Available Controls
 
 - WatermarkTextBox
-- ColorPicker (windows brushes)
-
+  - Watermark is the ghost text property
+  - Includes a BorderRadius property
+- ColorPicker 
+  - Based on windows brushes
+  - Uses a popup for the selector
+  - SelectedColor is the the current color
+  - Includes a BorderRadius property, this has an effect on the popup buttons too
 
 
 ### Screenshots

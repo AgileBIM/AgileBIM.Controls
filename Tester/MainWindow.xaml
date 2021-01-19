@@ -9,7 +9,7 @@
         Title="MainWindow" Height="450" Width="350">
     <StackPanel>
         <abc:WatermarkTextBox Watermark="This is a watermark" BorderRadius="5" Background="LightGray" HorizontalAlignment="Left" Width="300"/>
-        <abc:ColorPicker SelectedColor="Blue" BorderRadius="5" Width="40" Height="20" HorizontalAlignment="Left"/>
+        <abc:ColorPicker SelectedColor="Blue" CornerRadius="5" Width="40" Height="20" HorizontalAlignment="Left" Margin="5"/>
         
     </StackPanel>
 </Window>

@@ -22,15 +22,37 @@ namespace AgileBIM.Controls
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string propertyName = "") { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
-        private string _watermark = "Watermark Text";
-        public string Watermark { get { return _watermark; } set { _watermark = value; NotifyPropertyChanged(nameof(Watermark)); } }
-        private CornerRadius _radius = new CornerRadius(0);
-        public CornerRadius BorderRadius { get { return _radius; } set { _radius = value; NotifyPropertyChanged(nameof(BorderRadius)); } }
-        public CornerRadius BorderRadius2 { get { return new CornerRadius(_radius.TopLeft * 2, _radius.TopRight * 2, _radius.BottomRight * 2, _radius.BottomLeft * 2); } }
+        public CornerRadius BorderRadius2 { get { return new CornerRadius(BorderRadius.TopLeft * 2, BorderRadius.TopRight * 2, BorderRadius.BottomRight * 2, BorderRadius.BottomLeft * 2); } }
 
         public WatermarkTextBox()
         {
             InitializeComponent();
         }
+
+
+
+
+        public CornerRadius BorderRadius
+        {
+            get { return (CornerRadius)GetValue(BorderRadiusProperty); }
+            set { SetValue(BorderRadiusProperty, value); NotifyPropertyChanged(nameof(BorderRadius2)); }
+        }
+        public static readonly DependencyProperty BorderRadiusProperty =
+            DependencyProperty.Register("BorderRadius", typeof(CornerRadius), typeof(WatermarkTextBox), new PropertyMetadata(new CornerRadius(0)));
+
+
+
+
+        public string Watermark
+        {
+            get { return (string)GetValue(WatermarkProperty); }
+            set { SetValue(WatermarkProperty, value); }
+        }
+        public static readonly DependencyProperty WatermarkProperty =
+            DependencyProperty.Register("Watermark", typeof(string), typeof(WatermarkTextBox), new PropertyMetadata("Watermark Text"));
+
+
+
+
     }
 }

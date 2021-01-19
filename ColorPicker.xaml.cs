@@ -16,18 +16,22 @@ using System.Windows.Shapes;
 
 namespace AgileBIM.Controls
 {   
-    public partial class ColorPicker : UserControl, INotifyPropertyChanged
+    public partial class ColorPicker : Border, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(string propertyName = "") { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
-        private Brush _color = Brushes.Black;        
-        public Brush SelectedColor { get { return _color; } set { _color = value; NotifyPropertyChanged(nameof(SelectedColor)); } }
-        private CornerRadius _radius = new CornerRadius(0);
-        public CornerRadius BorderRadius { get { return _radius; } set { _radius = value; NotifyPropertyChanged(nameof(BorderRadius)); } }
+        private void NotifyPropertyChanged(string propertyName = "") { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }        
+        public Color SelectedColor { get { return (SelectedBrush as SolidColorBrush).Color; } set { SelectedBrush = new SolidColorBrush(value); NotifyPropertyChanged(nameof(SelectedBrush)); } }
+        public Brush SelectedBrush
+        {
+            get { return (Brush)GetValue(SelectedBrushProperty); }
+            set { SetValue(SelectedBrushProperty, value); }
+        }
+        public static readonly DependencyProperty SelectedBrushProperty =
+            DependencyProperty.Register("SelectedBrush", typeof(Brush), typeof(ColorPicker), new PropertyMetadata(Brushes.Black));
 
 
         public ColorPicker()
-        {
+        {   
             InitializeComponent();
         }
 
@@ -38,7 +42,7 @@ namespace AgileBIM.Controls
 
         private void btnColorOption_Click(object sender, RoutedEventArgs e)
         {
-            SelectedColor = (sender as Button).Background;
+            SelectedBrush = (sender as Button).Background;
             popColorPalette.IsOpen = false;
         }
 
@@ -46,5 +50,7 @@ namespace AgileBIM.Controls
         {
             popColorPalette.IsOpen = !popColorPalette.IsOpen;
         }
+
+
     }
 }

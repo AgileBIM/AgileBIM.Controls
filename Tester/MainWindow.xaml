@@ -7,9 +7,50 @@
         xmlns:abc="clr-namespace:AgileBIM.Controls;assembly=AgileBIM.Controls"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="350">
-    <StackPanel>
-        <abc:WatermarkTextBox Watermark="This is a watermark" BorderRadius="5" Background="LightGray" HorizontalAlignment="Left" Width="300"/>
-        <abc:ColorPicker SelectedColor="Blue" CornerRadius="5" Width="40" Height="20" HorizontalAlignment="Left" Margin="5"/>
+    <Window.Resources>
         
+    </Window.Resources>
+    <StackPanel>
+        <TabControl>
+            <TabItem Header="WatermarkTextBox">
+                <StackPanel>
+                    <TextBlock Text="Enabled Versions"/>
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <abc:WatermarkTextBox Watermark="This watermark" WatermarkFontFamily="Arial" BorderRadius="5"/>
+                        <TextBox Grid.Column="1" Background="LightGray"/>
+                    </Grid>
+                    <TextBlock Text="Disabled Versions"/>
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <abc:WatermarkTextBox BorderRadius="5" />
+                        <TextBox Grid.Column="1" Margin="5,0"/>
+                    </Grid>
+                    <TextBlock Text="Enabled Versions"/>
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </StackPanel>
+
+            </TabItem>
+            <TabItem Header="Misc">
+                <StackPanel>
+                    <abc:ColorPicker SelectedColor="Blue" CornerRadius="5" Width="40" Height="20" HorizontalAlignment="Left" Margin="5"/>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+
+
+
+
     </StackPanel>
 </Window>

@@ -37,7 +37,7 @@ namespace AgileBIM.Controls
 
         private void ColorPicker_Loaded(object sender, RoutedEventArgs e)
         {
-            this.icColorList.ItemsSource = typeof(Brushes).GetProperties();
+            this.icColorList.ItemsSource = typeof(Brushes).GetProperties().Where(p => p.Name != "Transparent").ToArray();
         }
 
         private void btnColorOption_Click(object sender, RoutedEventArgs e)

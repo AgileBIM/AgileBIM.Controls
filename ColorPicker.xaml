@@ -10,8 +10,8 @@
         BorderThickness="2"
         Padding="0"
         x:Name="uc"
-        MinHeight="20"
-        MinWidth="20"
+        MinHeight="10"
+        MinWidth="10"
         mc:Ignorable="d" 
         d:DesignHeight="30" d:DesignWidth="30">
     <Border.Resources>

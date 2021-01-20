@@ -14,31 +14,36 @@
         <TabControl>
             <TabItem Header="WatermarkTextBox">
                 <StackPanel>
-                    <TextBlock Text="Enabled Versions"/>
+                    <TextBlock Text="Enabled Versions" HorizontalAlignment="Center"/>
                     <Grid Margin="0,0,0,10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <abc:WatermarkTextBox Watermark="This watermark" WatermarkFontFamily="Arial" BorderRadius="5"/>
-                        <TextBox Grid.Column="1" Background="LightGray"/>
+                        <abc:WatermarkTextBox Watermark="This watermark" WatermarkFontFamily="Arial" BorderRadius="5" Margin="5,0,0,0"/>
+                        <abc:WatermarkTextBox Watermark="This watermark" WatermarkFontFamily="Arial" BorderRadius="5" Margin="5,0" Grid.Column="1" Text="This one has a value"/>
                     </Grid>
-                    <TextBlock Text="Disabled Versions"/>
+                    <TextBlock Text="Disabled Versions" HorizontalAlignment="Center"/>
                     <Grid Margin="0,0,0,10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <abc:WatermarkTextBox BorderRadius="5" />
-                        <TextBox Grid.Column="1" Margin="5,0"/>
+                        <abc:WatermarkTextBox IsEnabled="False" Watermark="This watermark" WatermarkFontFamily="Arial" BorderRadius="5" Margin="5,0,0,0"/>
+                        <abc:WatermarkTextBox IsEnabled="False" Watermark="This watermark" WatermarkFontFamily="Arial" BorderRadius="5" Margin="5,0" Grid.Column="1" Text="This one has a value"/>
                     </Grid>
-                    <TextBlock Text="Enabled Versions"/>
-                    <Grid Margin="0,0,0,10">
+                    <TextBlock Text="Watermark Box With ColorPicker" HorizontalAlignment="Center"/>
+                    <Grid Margin="5,0,5,10">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="25"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
+                        <abc:ColorPicker CornerRadius="5,0,0,5" BorderThickness="2,2,0,2" Padding="0" SelectedColor="Yellow" BorderBrush="Black"
+                                         Height="{Binding ActualHeight, ElementName=tbxThickness}"/>
+                        <abc:WatermarkTextBox x:Name="tbxThickness" Watermark="Line Thickness" BorderThickness="2" BorderRadius="0,5,5,0" Grid.Column="1" BorderBrush="Black"/>
                     </Grid>
+                    
+                    
                 </StackPanel>
 
             </TabItem>

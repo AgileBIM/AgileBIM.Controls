@@ -5,15 +5,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:local="clr-namespace:AgileBIM.Controls"
         Loaded="ColorPicker_Loaded"
-        Background="{Binding SelectedBrush, ElementName=uc}"
-        BorderBrush="Black"
-        BorderThickness="2"
+        Background="{Binding SelectedBrush, ElementName=uc}"        
         Padding="0"
         x:Name="uc"
         MinHeight="10"
         MinWidth="10"
         mc:Ignorable="d" 
         d:DesignHeight="30" d:DesignWidth="30">
+    <Border.Style>
+        <Style TargetType="{x:Type Border}">
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="2"/>            
+        </Style>
+    </Border.Style>
     <Border.Resources>
         <Style TargetType="{x:Type Button}">
             <Setter Property="HorizontalAlignment" Value="Center" />
@@ -49,7 +53,8 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Button Background="{Binding Name}" Width="20" Height="20" Margin="0" Padding="0" BorderBrush="Black" BorderThickness="1" Click="btnColorOption_Click"/>
+                            <Button Background="{Binding Name}" Width="20" Height="20" Margin="0" Padding="0" ToolTip="{Binding Name}"
+                                    BorderBrush="Black" BorderThickness="1" Click="btnColorOption_Click"/>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>                

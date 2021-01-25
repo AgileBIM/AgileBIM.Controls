@@ -15,9 +15,9 @@ using System.Windows.Shapes;
 
 namespace AgileBIM.Controls
 {
-    public partial class WatermarkTextBox : TextBox
+    public partial class AgileTextBox : TextBox
     { 
-        public WatermarkTextBox()
+        public AgileTextBox()
         {
             InitializeComponent();
         }
@@ -30,17 +30,17 @@ namespace AgileBIM.Controls
             set { SetValue(BorderRadiusProperty, value); }
         }
         public static readonly DependencyProperty BorderRadiusProperty =
-            DependencyProperty.Register("BorderRadius", typeof(CornerRadius), typeof(WatermarkTextBox), new PropertyMetadata(new CornerRadius(0)));
+            DependencyProperty.Register("BorderRadius", typeof(CornerRadius), typeof(AgileTextBox), new PropertyMetadata(new CornerRadius(0)));
 
 
 
-        public Brush FocusedBorderColor
+        public Brush BorderBrushFocused
         {
             get { return (Brush)GetValue(FocusedBorderProperty); }
             set { SetValue(FocusedBorderProperty, value); }
         }
         public static readonly DependencyProperty FocusedBorderProperty =
-            DependencyProperty.Register("FocusedBorder", typeof(Brush), typeof(WatermarkTextBox), new PropertyMetadata(new BrushConverter().ConvertFromString("#FF569DE5") as Brush));
+            DependencyProperty.Register("FocusedBorder", typeof(Brush), typeof(AgileTextBox), new PropertyMetadata(new BrushConverter().ConvertFromString("#FF569DE5") as Brush));
 
 
 
@@ -50,7 +50,7 @@ namespace AgileBIM.Controls
             set { SetValue(WatermarkColorProperty, value); }
         }
         public static readonly DependencyProperty WatermarkColorProperty =
-            DependencyProperty.Register("WatermarkColor", typeof(Brush), typeof(WatermarkTextBox), new PropertyMetadata(Brushes.LightGray));
+            DependencyProperty.Register("WatermarkColor", typeof(Brush), typeof(AgileTextBox), new PropertyMetadata(Brushes.LightGray));
 
 
 
@@ -60,7 +60,7 @@ namespace AgileBIM.Controls
             set { SetValue(WatermarkFontFamilyProperty, value); }
         }
         public static readonly DependencyProperty WatermarkFontFamilyProperty =
-            DependencyProperty.Register("WatermarkFontFamily", typeof(FontFamily), typeof(WatermarkTextBox), new PropertyMetadata());
+            DependencyProperty.Register("WatermarkFontFamily", typeof(FontFamily), typeof(AgileTextBox), new PropertyMetadata());
 
 
 
@@ -70,7 +70,7 @@ namespace AgileBIM.Controls
             set { SetValue(WatermarkProperty, value); }
         }
         public static readonly DependencyProperty WatermarkProperty =
-            DependencyProperty.Register("Watermark", typeof(string), typeof(WatermarkTextBox), new PropertyMetadata(""));
+            DependencyProperty.Register("Watermark", typeof(string), typeof(AgileTextBox), new PropertyMetadata(""));
 
 
 

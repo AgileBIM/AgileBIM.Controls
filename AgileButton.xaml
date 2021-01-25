@@ -1,0 +1,46 @@
+﻿<Button x:Class="AgileBIM.Controls.AgileButton"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:local="clr-namespace:AgileBIM.Controls"
+        mc:Ignorable="d" 
+        x:Name="btn"
+        d:DesignHeight="400" d:DesignWidth="400">
+    <Button.Template>
+        <ControlTemplate TargetType="{x:Type Button}">
+            <Border x:Name="border" 
+                    BorderBrush="{TemplateBinding BorderBrush}" 
+                    BorderThickness="{TemplateBinding BorderThickness}" 
+                    CornerRadius="{Binding BorderRadius, ElementName=btn}" 
+                    Background="{TemplateBinding Background}" 
+                    SnapsToDevicePixels="True">
+                <ContentPresenter x:Name="contentPresenter" 
+                                  ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                  Content="{TemplateBinding Content}" 
+                                  ContentStringFormat="{TemplateBinding ContentStringFormat}" 
+                                  Focusable="False" 
+                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                  Margin="{TemplateBinding Padding}" 
+                                  RecognizesAccessKey="True" 
+                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" TargetName="border" Value="{Binding BackgroundDisabled, ElementName=btn}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{Binding BorderBrushDisabled, ElementName=btn}"/>
+                    <Setter Property="Foreground" Value="{Binding ForegroundDisabled, ElementName=btn}"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="{Binding BackgroundHover, ElementName=btn}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{Binding BorderBrushHover, ElementName=btn}"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="{Binding BackgroundPressed, ElementName=btn}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{Binding BorderBrushPressed, ElementName=btn}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Button.Template>
+</Button>

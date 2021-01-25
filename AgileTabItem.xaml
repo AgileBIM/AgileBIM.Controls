@@ -1,0 +1,104 @@
+﻿<TabItem x:Class="AgileBIM.Controls.AgileTabItem"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+         xmlns:local="clr-namespace:AgileBIM.Controls"
+         mc:Ignorable="d"         
+         x:Name="ti"        
+         d:DesignHeight="400" d:DesignWidth="400">
+    <TabItem.Template>
+        <ControlTemplate TargetType="{x:Type TabItem}">
+            <Grid x:Name="templateRoot" Background="Transparent">
+                <Grid.Style>
+                    <Style TargetType="{x:Type Grid}" >
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding TabIsRotated, ElementName=ti}" Value="true">
+                                <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+                                <Setter Property="LayoutTransform">
+                                    <Setter.Value>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                            <SkewTransform AngleX="0" AngleY="0"/>
+                                            <RotateTransform Angle="-90"/>
+                                            <TranslateTransform X="0" Y="0"/>
+                                        </TransformGroup>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                            <SkewTransform AngleX="0" AngleY="0"/>
+                                            <RotateTransform Angle="0"/>
+                                            <TranslateTransform X="0" Y="0"/>
+                                        </TransformGroup>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+                <Border x:Name="mainBorder"
+                        BorderBrush="{Binding TabBorderBrush, ElementName=ti}" 
+                        BorderThickness="{Binding TabBorderThickness, ElementName=ti}" 
+                        CornerRadius="{Binding TabBorderRadius, ElementName=ti}"
+                        Background="{Binding TabBackground, ElementName=ti}" 
+                        Padding="0"
+                        Margin="0">
+                    <!--<Border x:Name="innerBorder" BorderBrush="#FFACACAC" CornerRadius="{Binding TabBorderRadius, ElementName=ti}"
+                            BorderThickness="{Binding TabBorderThickness, ElementName=ti}" 
+                            Background="White" Margin="-1" Opacity="0"/>-->
+                </Border>
+                <ContentPresenter x:Name="contentPresenter"
+                                  ContentTemplate="{TemplateBinding HeaderTemplate}" 
+                                  Content="{TemplateBinding Header}" 
+                                  ContentStringFormat="{TemplateBinding HeaderStringFormat}" 
+                                  ContentSource="Header" 
+                                  Focusable="False"                                   
+                                  HorizontalAlignment="{Binding HorizontalContentAlignment, ElementName=ti}" 
+                                  Margin="{TemplateBinding Padding}" 
+                                  RecognizesAccessKey="True" 
+                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                  TextBlock.FontWeight="{Binding TabFontWeight, ElementName=ti}"
+                                  TextBlock.FontSize="{Binding TabFontSize, ElementName=ti}"
+                                  VerticalAlignment="{Binding VerticalContentAlignment, ElementName=ti}" />
+            </Grid>
+            <ControlTemplate.Triggers>                
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="False"/>
+                        <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True"/>
+                    </MultiDataTrigger.Conditions>
+                    <Setter Property="Background" TargetName="mainBorder" Value="{Binding TabBackgroundHover, ElementName=ti}"/>
+                    <Setter Property="BorderBrush" TargetName="mainBorder" Value="{Binding TabBorderBrushHover, ElementName=ti}"/>
+                </MultiDataTrigger>
+
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="False"/>
+                        <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="False"/>
+                    </MultiDataTrigger.Conditions>
+                    <Setter Property="Background" TargetName="mainBorder" Value="{Binding TabBackground, ElementName=ti}"/>
+                    <Setter Property="BorderBrush" TargetName="mainBorder" Value="{Binding TabBorderBrush, ElementName=ti}"/>
+                </MultiDataTrigger>
+
+
+                <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="False">
+                    <Setter Property="Margin" TargetName="templateRoot" Value="{Binding Margin, ElementName=ti}"/>
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="True">
+                    <Setter Property="Panel.ZIndex" Value="100"/>
+                    <Setter Property="Margin" TargetName="templateRoot" Value="{Binding TabSelectedMargin, ElementName=ti}"/>
+                    <Setter Property="Background" TargetName="mainBorder" Value="{Binding TabBackgroundSelected, ElementName=ti}"/>
+                    <Setter Property="BorderBrush" TargetName="mainBorder" Value="{Binding TabBorderBrushSelected, ElementName=ti}"/>
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="False">
+                    <Setter Property="Opacity" TargetName="templateRoot" Value="0.5"/>
+                </DataTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </TabItem.Template>
+</TabItem>

@@ -8,7 +8,7 @@
     x:Class="Tester.MainWindow"
     mc:Ignorable="d"
     Background="White"
-    Title="MainWindow" Height="800" Width="350">
+    Title="AgileBIM Controls Tester" Height="800" Width="350">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -18,18 +18,31 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
+        <!--<abc:AgileTabControl Height="100">
+             <abc:AgileTabItem Header="asdfasdf" TabBackgroundSelected="Gray" TabBackground="Green" TabIsRotated="True" x:Name="zzzz">
+             <Button>
+             <TextBlock Text="asdfksadfkljsadf"/>
+             </Button>
+             </abc:AgileTabItem>
+             <abc:AgileTabItem Header="ddddd" TabBackgroundSelected="Gray" TabBorderBrush="Black" TabBorderThickness="4" TabBackground="Green">
+             <Button Content="asdfasdf"/>
+             </abc:AgileTabItem>                  
+             </abc:AgileTabControl>-->
+        
 
-        <abc:AgileTabControl TabStripPlacement="Right" BorderThickness="4" BorderRadius="12,0,0,12" Margin="12" MarginHeaderPanel="0,18,0,0" Background="Yellow" Height="200">
+        <abc:AgileTabControl TabStripPlacement="Right" BorderThickness="4" BorderBrush="Black" BorderRadius="12,0,0,12" Margin="12" MarginHeaderPanel="0,18,0,0" Background="Yellow" Height="200">
             <abc:AgileTabControl.TabBlankSpaceContent>
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
-                    also a
+                           also a
                     <LineBreak/>
-                    content
+                           content
                     <LineBreak/>
-                    area
-                </TextBlock>                    
+                           area
+                </TextBlock>
             </abc:AgileTabControl.TabBlankSpaceContent>
-            <abc:AgileTabItem Header="Square" TabBackgroundSelected="Gray" TabSelectedMargin="-4,0,0,0" BorderThickness="1" BorderBrush="LightGray" Background="AliceBlue"/>
+            <abc:AgileTabItem Header="Square" TabBackgroundSelected="Gray" TabSelectedMargin="-4,0,0,0" BorderThickness="1" BorderBrush="LightGray" Background="AliceBlue">
+                <Button Content="DAMN"/>
+            </abc:AgileTabItem>
             <abc:AgileTabItem Header="Round" TabBorderThickness="0,2,2,2" Padding="15,2" TabBorderRadius="0,8,8,0" TabSelectedMargin="0,0,0,0" TabBackgroundSelected="Blue" TabBackground="Green" Background="Blue"/>
             <abc:AgileTabItem Header="Rotated" TabIsRotated="True" HorizontalAlignment="Left" TabBorderRadius="0,0,0,10" TabBorderThickness="4,0,0,4" TabSelectedMargin="-4,0,0,0" TabBorderBrushSelected="Black" TabBorderBrush="Black" Padding="8,0,8,5" />
         </abc:AgileTabControl>
@@ -45,7 +58,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <abc:AgileTextBox Watermark="This watermark" WatermarkFontFamily="Arial" BorderRadius="5" Margin="5,0,0,0"/>
+                <abc:AgileTextBox Watermark="This has no value" WatermarkFontFamily="Arial" BorderRadius="5" Margin="5,0,0,0"/>
                 <abc:AgileTextBox Watermark="This watermark" WatermarkFontFamily="Arial" BorderRadius="5" Margin="5,0" Grid.Column="1" Text="This one has a value"/>
             </Grid>
             <TextBlock Text="Disabled Versions" HorizontalAlignment="Center"/>
@@ -64,7 +77,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <abc:AgileColorPicker CornerRadius="5,0,0,5" BorderThickness="2,2,0,2" Padding="0" SelectedColor="Yellow" BorderBrush="Black"
-                                              Height="{Binding ActualHeight, ElementName=tbxThickness}"/>
+                                      Height="{Binding ActualHeight, ElementName=tbxThickness}"/>
                 <abc:AgileTextBox Watermark="Line Thickness" BorderThickness="2" BorderRadius="0,5,5,0" Grid.Column="1" BorderBrush="Black"/>
             </Grid>
             <TextBlock Text="Misc AgileColorPicker Arrangments" HorizontalAlignment="Center"/>
@@ -91,6 +104,11 @@
                                        BackgroundPressed="LightGray"
                                        BorderBrushPressed="Teal"                                       
                                        
+                                       ForegroundHover="Blue"
+                                       ForegroundPressed="Green"
+                                       
+                                       Foreground="Yellow"
+                                       ForegroundChecked="White"
                                        BorderRadius="5"
                                        BorderThickness="3"
                                        Width="50"
@@ -169,13 +187,43 @@
                                        Margin="5,0"
                                        Content="Disabled"/>
             </StackPanel>
+            <TextBlock Text="Regular Buttons" HorizontalAlignment="Center" Margin="10"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <abc:AgileButton Background="Orange" 
+                                 BorderBrush="Red"
+                                 Foreground="Black"                                       
+                                 BackgroundHover="Aqua"
+                                 BorderBrushHover="LightGreen"                                       
+                                 BackgroundPressed="LightGray"
+                                 BorderBrushPressed="Teal"                                       
+                                 BorderRadius="5"
+                                 BorderThickness="3"
+                                 Padding="10,2"
+                                 Margin="5,0"
+                                 ForegroundHover="Blue"
+                                 ForegroundPressed="Green"
+                                 Content="Normal Button"/>
+                <abc:AgileButton Background="Orange" 
+                                 BorderBrush="Red"
+                                 Foreground="Black"                                       
+                                 BackgroundHover="Aqua"
+                                 BorderBrushHover="LightGreen"
+                                 IsEnabled="False"
+                                 BackgroundPressed="LightGray"
+                                 BorderBrushPressed="Teal"                                       
+                                 BorderRadius="5"
+                                 BorderThickness="3"
+                                 Padding="10,2"
+                                 Margin="5,0"                                 
+                                 Content="Normal Disabled"/>
+            </StackPanel>
             
 
         </StackPanel>
 
-      
 
-        <abc:AgileTabControl Grid.Row="4" SelectedIndex="3" Visibility="Visible" MinHeight="200" >
+
+        <abc:AgileTabControl Grid.Row="4" Background="Yellow" BorderRadius="5" SelectedIndex="3" Visibility="Visible" MinHeight="200" >
             <TabControl.Resources>
                 <Style x:Key="rotatedTab" TargetType="{x:Type abc:AgileTabItem}">
                     <Setter Property="Background" Value="Gray"/>
@@ -191,7 +239,7 @@
                     <Setter Property="TabBackgroundSelected" Value="Black" />
                     <Setter Property="TabBorderBrushHover" Value="MediumBlue"/>
                     <Setter Property="TabBackgroundHover" Value="Magenta"/>
-                    <!--<Setter Property="VerticalContentAlignment" Value="Bottom"/>-->
+                    <Setter Property="VerticalContentAlignment" Value="Bottom"/>
                     <Setter Property="TabIsRotated" Value="True"/>
                 </Style>
                 <Style x:Key="horzTab" TargetType="{x:Type abc:AgileTabItem}">
@@ -208,24 +256,12 @@
                     <Setter Property="VerticalContentAlignment" Value="Bottom"/>
                 </Style>
             </TabControl.Resources>
-            
 
-            <!--<abc:AgileTabItem Tag="My Header Name">
-                 <abc:AgileTabItem.Header>
-                 <Border BorderBrush="Black" BorderThickness="1">
-                 <Border.Style>
-                 <Style TargetType="{x:Type Border}">
-                 <Setter Property="Background" Value="Black"/>
-                 </Style>
-                 </Border.Style>
-                 <TextBlock Text="{Binding Parent.Parent.Tag}"/>
-                 </Border>
-                 
-                 </abc:AgileTabItem.Header>
-                 </abc:AgileTabItem>-->
+
+
 
             <abc:AgileTabItem Header="Longest" Style="{DynamicResource rotatedTab}">
-                
+                <Button Content="asdfasdf"/>
             </abc:AgileTabItem>
             <abc:AgileTabItem Header="Tab1" Style="{DynamicResource horzTab}"/>
             <abc:AgileTabItem Header="smll" Style="{DynamicResource rotatedTab}"/>

@@ -39,12 +39,12 @@
                             </Border>
                             <Border BorderThickness="{TemplateBinding BorderThickness}" Background="Transparent" Padding="1"
                                     BorderBrush="Transparent" SnapsToDevicePixels="True" IsHitTestVisible="False">
-                                <Label Padding="0" 
+                                <TextBlock Padding="0" 
                                    IsEnabled="{Binding IsEnabled, ElementName=tbx}"                                   
                                    IsHitTestVisible="False">
-                                    <Label.Style>
-                                        <Style TargetType="{x:Type Label}">
-                                            <Setter Property="Content" Value="{Binding Watermark, ElementName=tbx}"/>
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Text" Value="{Binding Watermark, ElementName=tbx}"/>
                                             <Setter Property="HorizontalAlignment" Value="{Binding HorizontalContentAlignment, ElementName=tbx}"/>
                                             <Setter Property="VerticalAlignment" Value="{Binding VerticalContentAlignment, ElementName=tbx}"/>
                                             <Setter Property="Margin" Value="{Binding Padding, ElementName=tbx}"/>
@@ -55,7 +55,7 @@
                                                 <DataTrigger Binding="{Binding IsEnabled, ElementName=tbx}" Value="False">
                                                     <Setter Property="Visibility" Value="Visible"/>
                                                     <Setter Property="HorizontalAlignment" Value="Center"/>
-                                                    <Setter Property="Content" Value="Disabled"/>
+                                                    <Setter Property="Text" Value="Disabled"/>
                                                     <Setter Property="FontFamily" Value="Arial"/>                                                    
                                                 </DataTrigger>
                                                 <MultiDataTrigger>
@@ -67,8 +67,8 @@
                                                 </MultiDataTrigger>
                                             </Style.Triggers>
                                         </Style>
-                                    </Label.Style>
-                                </Label>
+                                    </TextBlock.Style>
+                                </TextBlock>
                             </Border>
                         </Grid>
 

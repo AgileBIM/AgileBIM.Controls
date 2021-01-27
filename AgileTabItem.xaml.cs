@@ -13,73 +13,101 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+#if DEBUG
 namespace AgileBIM.Controls
 {
-    public partial class AgileTabItem : TabItem //, INotifyPropertyChanged
-    {
-        //public event PropertyChangedEventHandler PropertyChanged;
-        //private void NotifyPropertyChanged(string propertyName = "") { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
+    public class AgileTabItem : AgileBIM.XamlTemplates.AgileTabItemDesigner { }
+}
 
+namespace AgileBIM.XamlTemplates
+#else
+namespace AgileBIM.Controls
+#endif
+{
+#if DEBUG
+    public partial class AgileTabItemDesigner : TabItem
+#else
+    public class AgileTabItem : TabItem //, INotifyPropertyChanged
+#endif
+    {   
+
+#if DEBUG
+        private static Type ThisControl = typeof(AgileTabItemDesigner);
+#else
+        private static Type ThisControl = typeof(AgileTabItem);
+        private string Template64 = "PENvbnRyb2xUZW1wbGF0ZSBUYXJnZXRUeXBlPSJ7eDpUeXBlIFRhYkl0ZW19IiB4bWxucz0iaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93aW5meC8yMDA2L3hhbWwvcHJlc2VudGF0aW9uIiB4bWxuczp4PSJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dpbmZ4LzIwMDYveGFtbCI+DQogICAgICAgICAgICA8R3JpZCBOYW1lPSJ0ZW1wbGF0ZVJvb3QiIEJhY2tncm91bmQ9IlRyYW5zcGFyZW50Ij4NCiAgICAgICAgICAgICAgICA8R3JpZC5TdHlsZT4NCiAgICAgICAgICAgICAgICAgICAgPFN0eWxlIFRhcmdldFR5cGU9Int4OlR5cGUgR3JpZH0iPg0KICAgICAgICAgICAgICAgICAgICAgICAgPFN0eWxlLlRyaWdnZXJzPg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxEYXRhVHJpZ2dlciBCaW5kaW5nPSJ7QmluZGluZyBUYWJJc1JvdGF0ZWQsIFJlbGF0aXZlU291cmNlPXtSZWxhdGl2ZVNvdXJjZSBBbmNlc3RvclR5cGU9VGFiSXRlbX19IiBWYWx1ZT0idHJ1ZSI+DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxTZXR0ZXIgUHJvcGVydHk9IlJlbmRlclRyYW5zZm9ybU9yaWdpbiIgVmFsdWU9IjAuNSwwLjUiLz4NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPFNldHRlciBQcm9wZXJ0eT0iTGF5b3V0VHJhbnNmb3JtIj4NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxTZXR0ZXIuVmFsdWU+DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPFRyYW5zZm9ybUdyb3VwPg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8U2NhbGVUcmFuc2Zvcm0gU2NhbGVYPSIxIiBTY2FsZVk9IjEiLz4NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPFNrZXdUcmFuc2Zvcm0gQW5nbGVYPSIwIiBBbmdsZVk9IjAiLz4NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPFJvdGF0ZVRyYW5zZm9ybSBBbmdsZT0iLTkwIi8+DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxUcmFuc2xhdGVUcmFuc2Zvcm0gWD0iMCIgWT0iMCIvPg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwvVHJhbnNmb3JtR3JvdXA+DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L1NldHRlci5WYWx1ZT4NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPC9TZXR0ZXI+DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxTZXR0ZXIgUHJvcGVydHk9IlJlbmRlclRyYW5zZm9ybSI+DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8U2V0dGVyLlZhbHVlPg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxUcmFuc2Zvcm1Hcm91cD4NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPFNjYWxlVHJhbnNmb3JtIFNjYWxlWD0iMSIgU2NhbGVZPSIxIi8+DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxTa2V3VHJhbnNmb3JtIEFuZ2xlWD0iMCIgQW5nbGVZPSIwIi8+DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxSb3RhdGVUcmFuc2Zvcm0gQW5nbGU9IjAiLz4NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPFRyYW5zbGF0ZVRyYW5zZm9ybSBYPSIwIiBZPSIwIi8+DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPC9UcmFuc2Zvcm1Hcm91cD4NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwvU2V0dGVyLlZhbHVlPg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L1NldHRlcj4NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L0RhdGFUcmlnZ2VyPg0KICAgICAgICAgICAgICAgICAgICAgICAgPC9TdHlsZS5UcmlnZ2Vycz4NCiAgICAgICAgICAgICAgICAgICAgPC9TdHlsZT4NCiAgICAgICAgICAgICAgICA8L0dyaWQuU3R5bGU+DQogICAgICAgICAgICAgICAgPEJvcmRlciBOYW1lPSJtYWluQm9yZGVyIg0KICAgICAgICAgICAgICAgICAgICAgICAgQm9yZGVyQnJ1c2g9IntCaW5kaW5nIFRhYkJvcmRlckJydXNoLCBSZWxhdGl2ZVNvdXJjZT17UmVsYXRpdmVTb3VyY2UgQW5jZXN0b3JUeXBlPVRhYkl0ZW19fSIgDQogICAgICAgICAgICAgICAgICAgICAgICBCb3JkZXJUaGlja25lc3M9IntCaW5kaW5nIFRhYkJvcmRlclRoaWNrbmVzcywgUmVsYXRpdmVTb3VyY2U9e1JlbGF0aXZlU291cmNlIEFuY2VzdG9yVHlwZT1UYWJJdGVtfX0iIA0KICAgICAgICAgICAgICAgICAgICAgICAgQ29ybmVyUmFkaXVzPSJ7QmluZGluZyBUYWJCb3JkZXJSYWRpdXMsIFJlbGF0aXZlU291cmNlPXtSZWxhdGl2ZVNvdXJjZSBBbmNlc3RvclR5cGU9VGFiSXRlbX19Ig0KICAgICAgICAgICAgICAgICAgICAgICAgQmFja2dyb3VuZD0ie0JpbmRpbmcgVGFiQmFja2dyb3VuZCwgUmVsYXRpdmVTb3VyY2U9e1JlbGF0aXZlU291cmNlIEFuY2VzdG9yVHlwZT1UYWJJdGVtfX0iIA0KICAgICAgICAgICAgICAgICAgICAgICAgUGFkZGluZz0iMCINCiAgICAgICAgICAgICAgICAgICAgICAgIE1hcmdpbj0iMCI+ICAgICAgICAgICAgICAgICAgICANCiAgICAgICAgICAgICAgICA8L0JvcmRlcj4NCiAgICAgICAgICAgICAgICA8Q29udGVudFByZXNlbnRlciBOYW1lPSJjb250ZW50UHJlc2VudGVyIg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIENvbnRlbnRUZW1wbGF0ZT0ie0JpbmRpbmcgSGVhZGVyVGVtcGxhdGUsIFJlbGF0aXZlU291cmNlPXtSZWxhdGl2ZVNvdXJjZSBBbmNlc3RvclR5cGU9VGFiSXRlbX19Ig0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIENvbnRlbnQ9IntCaW5kaW5nIEhlYWRlciwgUmVsYXRpdmVTb3VyY2U9e1JlbGF0aXZlU291cmNlIEFuY2VzdG9yVHlwZT1UYWJJdGVtfX0iDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQ29udGVudFN0cmluZ0Zvcm1hdD0ie0JpbmRpbmcgSGVhZGVyU3RyaW5nRm9ybWF0LCBSZWxhdGl2ZVNvdXJjZT17UmVsYXRpdmVTb3VyY2UgQW5jZXN0b3JUeXBlPVRhYkl0ZW19fSINCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBDb250ZW50U291cmNlPSJIZWFkZXIiIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEZvY3VzYWJsZT0iRmFsc2UiICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICANCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBIb3Jpem9udGFsQWxpZ25tZW50PSJ7QmluZGluZyBIb3Jpem9udGFsQ29udGVudEFsaWdubWVudCwgUmVsYXRpdmVTb3VyY2U9e1JlbGF0aXZlU291cmNlIEFuY2VzdG9yVHlwZT1UYWJJdGVtfX0iIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIE1hcmdpbj0ie0JpbmRpbmcgUGFkZGluZywgUmVsYXRpdmVTb3VyY2U9e1JlbGF0aXZlU291cmNlIEFuY2VzdG9yVHlwZT1UYWJJdGVtfX0iDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgUmVjb2duaXplc0FjY2Vzc0tleT0iVHJ1ZSIgDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgU25hcHNUb0RldmljZVBpeGVscz0ie0JpbmRpbmcgU25hcHNUb0RldmljZVBpeGVscywgUmVsYXRpdmVTb3VyY2U9e1JlbGF0aXZlU291cmNlIEFuY2VzdG9yVHlwZT1UYWJJdGVtfX0iDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgVGV4dEJsb2NrLkZvbnRXZWlnaHQ9IntCaW5kaW5nIFRhYkZvbnRXZWlnaHQsIFJlbGF0aXZlU291cmNlPXtSZWxhdGl2ZVNvdXJjZSBBbmNlc3RvclR5cGU9VGFiSXRlbX19Ig0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFRleHRCbG9jay5Gb250U2l6ZT0ie0JpbmRpbmcgVGFiRm9udFNpemUsIFJlbGF0aXZlU291cmNlPXtSZWxhdGl2ZVNvdXJjZSBBbmNlc3RvclR5cGU9VGFiSXRlbX19Ig0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFZlcnRpY2FsQWxpZ25tZW50PSJ7QmluZGluZyBWZXJ0aWNhbENvbnRlbnRBbGlnbm1lbnQsIFJlbGF0aXZlU291cmNlPXtSZWxhdGl2ZVNvdXJjZSBBbmNlc3RvclR5cGU9VGFiSXRlbX19IiAvPg0KICAgICAgICAgICAgPC9HcmlkPg0KICAgICAgICAgICAgPENvbnRyb2xUZW1wbGF0ZS5UcmlnZ2Vycz4gICAgICAgICAgICAgICAgDQogICAgICAgICAgICAgICAgPE11bHRpRGF0YVRyaWdnZXI+DQogICAgICAgICAgICAgICAgICAgIDxNdWx0aURhdGFUcmlnZ2VyLkNvbmRpdGlvbnM+DQogICAgICAgICAgICAgICAgICAgICAgICA8Q29uZGl0aW9uIEJpbmRpbmc9IntCaW5kaW5nIElzU2VsZWN0ZWQsIFJlbGF0aXZlU291cmNlPXtSZWxhdGl2ZVNvdXJjZSBTZWxmfX0iIFZhbHVlPSJGYWxzZSIvPg0KICAgICAgICAgICAgICAgICAgICAgICAgPENvbmRpdGlvbiBCaW5kaW5nPSJ7QmluZGluZyBJc01vdXNlT3ZlciwgUmVsYXRpdmVTb3VyY2U9e1JlbGF0aXZlU291cmNlIFNlbGZ9fSIgVmFsdWU9IlRydWUiLz4NCiAgICAgICAgICAgICAgICAgICAgPC9NdWx0aURhdGFUcmlnZ2VyLkNvbmRpdGlvbnM+DQogICAgICAgICAgICAgICAgICAgIDxTZXR0ZXIgUHJvcGVydHk9IkJhY2tncm91bmQiIFRhcmdldE5hbWU9Im1haW5Cb3JkZXIiIFZhbHVlPSJ7QmluZGluZyBUYWJCYWNrZ3JvdW5kSG92ZXIsIFJlbGF0aXZlU291cmNlPXtSZWxhdGl2ZVNvdXJjZSBBbmNlc3RvclR5cGU9VGFiSXRlbX19Ii8+DQogICAgICAgICAgICAgICAgICAgIDxTZXR0ZXIgUHJvcGVydHk9IkJvcmRlckJydXNoIiBUYXJnZXROYW1lPSJtYWluQm9yZGVyIiBWYWx1ZT0ie0JpbmRpbmcgVGFiQm9yZGVyQnJ1c2hIb3ZlciwgUmVsYXRpdmVTb3VyY2U9e1JlbGF0aXZlU291cmNlIEFuY2VzdG9yVHlwZT1UYWJJdGVtfX0iLz4NCiAgICAgICAgICAgICAgICA8L011bHRpRGF0YVRyaWdnZXI+DQoNCiAgICAgICAgICAgICAgICA8TXVsdGlEYXRhVHJpZ2dlcj4NCiAgICAgICAgICAgICAgICAgICAgPE11bHRpRGF0YVRyaWdnZXIuQ29uZGl0aW9ucz4NCiAgICAgICAgICAgICAgICAgICAgICAgIDxDb25kaXRpb24gQmluZGluZz0ie0JpbmRpbmcgSXNTZWxlY3RlZCwgUmVsYXRpdmVTb3VyY2U9e1JlbGF0aXZlU291cmNlIFNlbGZ9fSIgVmFsdWU9IkZhbHNlIi8+DQogICAgICAgICAgICAgICAgICAgICAgICA8Q29uZGl0aW9uIEJpbmRpbmc9IntCaW5kaW5nIElzTW91c2VPdmVyLCBSZWxhdGl2ZVNvdXJjZT17UmVsYXRpdmVTb3VyY2UgU2VsZn19IiBWYWx1ZT0iRmFsc2UiLz4NCiAgICAgICAgICAgICAgICAgICAgPC9NdWx0aURhdGFUcmlnZ2VyLkNvbmRpdGlvbnM+DQogICAgICAgICAgICAgICAgICAgIDxTZXR0ZXIgUHJvcGVydHk9IkJhY2tncm91bmQiIFRhcmdldE5hbWU9Im1haW5Cb3JkZXIiIFZhbHVlPSJ7QmluZGluZyBUYWJCYWNrZ3JvdW5kLCBSZWxhdGl2ZVNvdXJjZT17UmVsYXRpdmVTb3VyY2UgQW5jZXN0b3JUeXBlPVRhYkl0ZW19fSIvPg0KICAgICAgICAgICAgICAgICAgICA8U2V0dGVyIFByb3BlcnR5PSJCb3JkZXJCcnVzaCIgVGFyZ2V0TmFtZT0ibWFpbkJvcmRlciIgVmFsdWU9IntCaW5kaW5nIFRhYkJvcmRlckJydXNoLCBSZWxhdGl2ZVNvdXJjZT17UmVsYXRpdmVTb3VyY2UgQW5jZXN0b3JUeXBlPVRhYkl0ZW19fSIvPg0KICAgICAgICAgICAgICAgIDwvTXVsdGlEYXRhVHJpZ2dlcj4NCg0KDQogICAgICAgICAgICAgICAgPERhdGFUcmlnZ2VyIEJpbmRpbmc9IntCaW5kaW5nIElzU2VsZWN0ZWQsIFJlbGF0aXZlU291cmNlPXtSZWxhdGl2ZVNvdXJjZSBTZWxmfX0iIFZhbHVlPSJGYWxzZSI+DQogICAgICAgICAgICAgICAgICAgIDxTZXR0ZXIgUHJvcGVydHk9Ik1hcmdpbiIgVGFyZ2V0TmFtZT0idGVtcGxhdGVSb290IiBWYWx1ZT0ie0JpbmRpbmcgTWFyZ2luLCBSZWxhdGl2ZVNvdXJjZT17UmVsYXRpdmVTb3VyY2UgQW5jZXN0b3JUeXBlPVRhYkl0ZW19fSIvPg0KICAgICAgICAgICAgICAgIDwvRGF0YVRyaWdnZXI+DQoNCiAgICAgICAgICAgICAgICA8RGF0YVRyaWdnZXIgQmluZGluZz0ie0JpbmRpbmcgSXNTZWxlY3RlZCwgUmVsYXRpdmVTb3VyY2U9e1JlbGF0aXZlU291cmNlIFNlbGZ9fSIgVmFsdWU9IlRydWUiPg0KICAgICAgICAgICAgICAgICAgICA8U2V0dGVyIFByb3BlcnR5PSJQYW5lbC5aSW5kZXgiIFZhbHVlPSIxMDAiLz4NCiAgICAgICAgICAgICAgICAgICAgPFNldHRlciBQcm9wZXJ0eT0iTWFyZ2luIiBUYXJnZXROYW1lPSJ0ZW1wbGF0ZVJvb3QiIFZhbHVlPSJ7QmluZGluZyBUYWJTZWxlY3RlZE1hcmdpbiwgUmVsYXRpdmVTb3VyY2U9e1JlbGF0aXZlU291cmNlIEFuY2VzdG9yVHlwZT1UYWJJdGVtfX0iLz4NCiAgICAgICAgICAgICAgICAgICAgPFNldHRlciBQcm9wZXJ0eT0iQmFja2dyb3VuZCIgVGFyZ2V0TmFtZT0ibWFpbkJvcmRlciIgVmFsdWU9IntCaW5kaW5nIFRhYkJhY2tncm91bmRTZWxlY3RlZCwgUmVsYXRpdmVTb3VyY2U9e1JlbGF0aXZlU291cmNlIEFuY2VzdG9yVHlwZT1UYWJJdGVtfX0iLz4NCiAgICAgICAgICAgICAgICAgICAgPFNldHRlciBQcm9wZXJ0eT0iQm9yZGVyQnJ1c2giIFRhcmdldE5hbWU9Im1haW5Cb3JkZXIiIFZhbHVlPSJ7QmluZGluZyBUYWJCb3JkZXJCcnVzaFNlbGVjdGVkLCBSZWxhdGl2ZVNvdXJjZT17UmVsYXRpdmVTb3VyY2UgQW5jZXN0b3JUeXBlPVRhYkl0ZW19fSIvPg0KICAgICAgICAgICAgICAgIDwvRGF0YVRyaWdnZXI+DQoNCiAgICAgICAgICAgICAgICA8RGF0YVRyaWdnZXIgQmluZGluZz0ie0JpbmRpbmcgSXNFbmFibGVkLCBSZWxhdGl2ZVNvdXJjZT17UmVsYXRpdmVTb3VyY2UgU2VsZn19IiBWYWx1ZT0iRmFsc2UiPg0KICAgICAgICAgICAgICAgICAgICA8U2V0dGVyIFByb3BlcnR5PSJPcGFjaXR5IiBUYXJnZXROYW1lPSJ0ZW1wbGF0ZVJvb3QiIFZhbHVlPSIwLjUiLz4NCiAgICAgICAgICAgICAgICA8L0RhdGFUcmlnZ2VyPg0KICAgICAgICAgICAgPC9Db250cm9sVGVtcGxhdGUuVHJpZ2dlcnM+DQogICAgICAgIDwvQ29udHJvbFRlbXBsYXRlPg==";
+#endif
+
+
+#if DEBUG
+        public AgileTabItemDesigner() { InitializeComponent(); }
+#else
         public AgileTabItem()
         {
-            InitializeComponent();
-        }
+            string decoded = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(Template64));
+            System.IO.StringReader sr = new System.IO.StringReader(decoded);
+            System.Xml.XmlReader xr = System.Xml.XmlReader.Create(sr);
+            ControlTemplate ct = (ControlTemplate)System.Windows.Markup.XamlReader.Load(xr);
 
+            DefaultStyleKey = ThisControl;
+            Template = ct;
+        }
+#endif
         public FontWeight TabFontWeight { get { return (FontWeight)GetValue(TabFontWeightProperty); } set { SetValue(TabFontWeightProperty, value); } }
         public static readonly DependencyProperty TabFontWeightProperty =
-            DependencyProperty.Register("TabFontWeight", typeof(FontWeight), typeof(AgileTabItem), new PropertyMetadata(FontWeights.Bold));
+            DependencyProperty.Register("TabFontWeight", typeof(FontWeight), ThisControl, new PropertyMetadata(FontWeights.Bold));
 
         public double TabFontSize { get { return (double)GetValue(TabFontSizeProperty); } set { SetValue(TabFontSizeProperty, value); } }
         public static readonly DependencyProperty TabFontSizeProperty =
-            DependencyProperty.Register("TabFontSize", typeof(double), typeof(AgileTabItem), new PropertyMetadata(SystemFonts.CaptionFontSize));
+            DependencyProperty.Register("TabFontSize", typeof(double), ThisControl, new PropertyMetadata(SystemFonts.CaptionFontSize));
 
 
 
         public bool TabIsRotated { get { return (bool)GetValue(TabIsRotatedProperty); } set { SetValue(TabIsRotatedProperty, value); } }
         public static readonly DependencyProperty TabIsRotatedProperty = 
-            DependencyProperty.Register("TabIsRotated", typeof(bool), typeof(AgileTabItem), new PropertyMetadata(false));
+            DependencyProperty.Register("TabIsRotated", typeof(bool), ThisControl, new PropertyMetadata(false));
 
 
 
         public Brush TabBackgroundHover { get { return (Brush)GetValue(TabBackgroundHoverProperty); } set { SetValue(TabBackgroundHoverProperty, value); } }
         public static readonly DependencyProperty TabBackgroundHoverProperty =
-            DependencyProperty.Register("TabBackgroundHover", typeof(Brush), typeof(AgileTabItem), new PropertyMetadata(Brushes.Khaki));
+            DependencyProperty.Register("TabBackgroundHover", typeof(Brush), ThisControl, new PropertyMetadata(Brushes.Khaki));
 
         public Brush TabBorderBrushHover { get { return (Brush)GetValue(TabBorderBrushHoverProperty); } set { SetValue(TabBorderBrushHoverProperty, value); } }
         public static readonly DependencyProperty TabBorderBrushHoverProperty =
-            DependencyProperty.Register("TabBorderBrushHover", typeof(Brush), typeof(AgileTabItem), new PropertyMetadata(Brushes.DarkTurquoise));
+            DependencyProperty.Register("TabBorderBrushHover", typeof(Brush), ThisControl, new PropertyMetadata(Brushes.DarkTurquoise));
 
 
         public Brush TabBackgroundSelected { get { return (Brush)GetValue(TabBackgroundSelectedProperty); } set { SetValue(TabBackgroundSelectedProperty, value); } }
         public static readonly DependencyProperty TabBackgroundSelectedProperty =
-            DependencyProperty.Register("TabBackgroundSelected", typeof(Brush), typeof(AgileTabItem), new PropertyMetadata(Brushes.Gray));
+            DependencyProperty.Register("TabBackgroundSelected", typeof(Brush), ThisControl, new PropertyMetadata(Brushes.Gray));
 
         public Brush TabBorderBrushSelected { get { return (Brush)GetValue(TabBorderBrushSelectedProperty); } set { SetValue(TabBorderBrushSelectedProperty, value); } }
         public static readonly DependencyProperty TabBorderBrushSelectedProperty =
-            DependencyProperty.Register("TabBorderBrushSelected", typeof(Brush), typeof(AgileTabItem), new PropertyMetadata(Brushes.Gray));
+            DependencyProperty.Register("TabBorderBrushSelected", typeof(Brush), ThisControl, new PropertyMetadata(Brushes.Gray));
 
 
         public Brush TabBackground { get { return (Brush)GetValue(TabBackgroundProperty); } set { SetValue(TabBackgroundProperty, value); } }
         public static readonly DependencyProperty TabBackgroundProperty =
-            DependencyProperty.Register("TabBackground", typeof(Brush), typeof(AgileTabItem), new PropertyMetadata(Brushes.Turquoise));
+            DependencyProperty.Register("TabBackground", typeof(Brush), ThisControl, new PropertyMetadata(Brushes.Turquoise));
 
         public Brush TabBorderBrush { get { return (Brush)GetValue(TabBorderBrushProperty); } set { SetValue(TabBorderBrushProperty, value); } }
         public static readonly DependencyProperty TabBorderBrushProperty =
-            DependencyProperty.Register("TabBorderBrush", typeof(Brush), typeof(AgileTabItem), new PropertyMetadata(Brushes.Black));
+            DependencyProperty.Register("TabBorderBrush", typeof(Brush), ThisControl, new PropertyMetadata(Brushes.Black));
 
 
 
         public CornerRadius TabBorderRadius { get { return (CornerRadius)GetValue(TabBorderRadiusProperty); } set { SetValue(TabBorderRadiusProperty, value); } }
         public static readonly DependencyProperty TabBorderRadiusProperty =
-            DependencyProperty.Register("TabBorderRadius", typeof(CornerRadius), typeof(AgileTabItem), new PropertyMetadata(new CornerRadius(0)));
+            DependencyProperty.Register("TabBorderRadius", typeof(CornerRadius), ThisControl, new PropertyMetadata(new CornerRadius(0)));
 
         public Thickness TabBorderThickness { get { return (Thickness)GetValue(TabBorderThicknessProperty); } set { SetValue(TabBorderThicknessProperty, value); } }
         public static readonly DependencyProperty TabBorderThicknessProperty =
-            DependencyProperty.Register("TabBorderThickness", typeof(Thickness), typeof(AgileTabItem), new PropertyMetadata(new Thickness(0)));
+            DependencyProperty.Register("TabBorderThickness", typeof(Thickness), ThisControl, new PropertyMetadata(new Thickness(0)));
 
         public Thickness TabSelectedMargin { get { return (Thickness)GetValue(TabSelectedMarginProperty); } set { SetValue(TabSelectedMarginProperty, value); } }
         public static readonly DependencyProperty TabSelectedMarginProperty =
-            DependencyProperty.Register("TabSelectedMargin", typeof(Thickness), typeof(AgileTabItem), new PropertyMetadata(new Thickness(0)));
+            DependencyProperty.Register("TabSelectedMargin", typeof(Thickness), ThisControl, new PropertyMetadata(new Thickness(0)));
 
 
 

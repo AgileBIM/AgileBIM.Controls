@@ -40,6 +40,7 @@
         </Style>
     </Border.Resources>
     <Grid>
+        <!--Background="{Binding SelectedBrush, ElementName=uc}"-->
         <Button x:Name="btnColor"
                 Click="btnColor_Click"
                 Focusable="False"                   
@@ -48,9 +49,20 @@
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 Margin="2"
-                Background="{Binding SelectedBrush, ElementName=uc}"                
+                Background="Transparent"              
                 Foreground="{Binding LabelColor, ElementName=uc}">
-            <TextBlock Text="{Binding Label, ElementName=uc}" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0" Margin="0"/>
+            <TextBlock Text="{Binding Label, ElementName=uc}" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0" Margin="0">
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Visible"/>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
         </Button>
         <Popup x:Name="popColorPalette" PlacementTarget="{Binding ElementName=btnColor}" Placement="Custom" Width="264">
             <Border BorderThickness="2" BorderBrush="Black">

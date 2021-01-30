@@ -47,6 +47,9 @@
     <Compile Include="AgileButton.xaml.cs">
       <DependentUpon>AgileButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AgileComboBox.xaml.cs">
+      <DependentUpon>AgileComboBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AgileTabControl.xaml.cs">
       <DependentUpon>AgileTabControl.xaml</DependentUpon>
     </Compile>
@@ -59,7 +62,6 @@
     <Compile Include="AgileColorPicker.xaml.cs">
       <DependentUpon>AgileColorPicker.xaml</DependentUpon>
     </Compile>
-    <Compile Include="fromCore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AgileTextBox.xaml.cs">
       <DependentUpon>AgileTextBox.xaml</DependentUpon>
@@ -67,6 +69,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="AgileButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AgileComboBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -7,7 +7,9 @@
         mc:Ignorable="d" 
         d:DesignHeight="400" d:DesignWidth="400">
     <Button.Template>
-        <ControlTemplate TargetType="{x:Type Button}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        <ControlTemplate TargetType="{x:Type Button}" 
+                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
             <Border x:Name="border" 
                     BorderBrush="{TemplateBinding BorderBrush}" 
                     BorderThickness="{TemplateBinding BorderThickness}" 

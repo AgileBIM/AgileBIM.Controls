@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -55,6 +56,9 @@ namespace AgileBIM.Controls
             Template = ct;
             this.HorizontalContentAlignment = HorizontalAlignment.Center;
             this.VerticalContentAlignment = VerticalAlignment.Center;
+            this.BorderThickness = new Thickness(1);
+            this.BorderBrush = Brushes.DimGray;
+            this.Background = Brushes.LightGray;
         }
 #endif
 
@@ -104,6 +108,5 @@ namespace AgileBIM.Controls
         public Brush ForegroundDisabled { get { return (Brush)GetValue(ForegroundDisabledProperty); } set { SetValue(ForegroundDisabledProperty, value); } }
         public static readonly DependencyProperty ForegroundDisabledProperty =
             DependencyProperty.Register("ForegroundDisabled", typeof(Brush), ThisControl, new PropertyMetadata(new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF838383"))));
-
     }
 }

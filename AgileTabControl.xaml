@@ -23,7 +23,7 @@
                 </Grid.RowDefinitions>
                 <TabPanel x:Name="HeaderPanel"
                           Panel.ZIndex="1"                          
-                          Margin="{Binding MarginHeaderPanel, RelativeSource={RelativeSource AncestorType=TabControl}}"
+                          Margin="{Binding HeaderPanelMargin, RelativeSource={RelativeSource AncestorType=TabControl}}"
                           Background="{Binding Background, RelativeSource={RelativeSource AncestorType=TabControl}}"
                           IsItemsHost="True"                          
                           KeyboardNavigation.TabIndex="2"/>

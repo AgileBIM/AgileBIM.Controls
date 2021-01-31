@@ -30,7 +30,7 @@
              </abc:AgileTabControl>-->
 
 
-        <abc:AgileTabControl TabStripPlacement="Right" BorderThickness="4" BorderBrush="Black" BorderRadius="12,0,0,12" Margin="12" MarginHeaderPanel="0,18,0,0" Background="Yellow" Height="200">
+        <abc:AgileTabControl TabStripPlacement="Right" BorderThickness="4" BorderBrush="Black" BorderRadius="12,0,0,12" Margin="12" HeaderPanelMargin="0,18,0,0" Background="Yellow" Height="200">
             <abc:AgileTabControl.TabBlankSpaceContent>
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="also a"/><LineBreak/><Run Text="content"/><LineBreak/><Run Text="area"/></TextBlock>
             </abc:AgileTabControl.TabBlankSpaceContent>
@@ -218,11 +218,106 @@
                                  Margin="5,0"                                 
                                  Content="Normal Disabled"/>
             </StackPanel>
-            <abc:AgileComboBox Background="Red" SelectedIndex="0">
-                <ComboBoxItem Content="wtf over"/>
+            <abc:AgileComboBox BorderBrushHover="DimGray"
+                               BackgroundHover="Gainsboro"
+                               ForegroundHover="Black"
+                               
+                               
+                               Background="Gray"
+                               Foreground="White"
+                               BorderBrush="Black"
+                               BorderThickness="3"
+                               BorderRadius="8"
+                               
+                               PopupBorderThickness="5"
+                               PopupBorderRadius="10"
+                               PopupContentsMargin="5,5,0,5"                               
+                               PopupPlacement="Center"
+                               PopupScrollBarBrush="Black"
+                               PopupBackground="DimGray"      
+                               PopupBorderBrush="Black"
+                               
+                               SelectedIndex="0" Margin="5">
+                <ComboBoxItem Content="Random Combobox Content Item asldkfjasdlfj asldkfjalskdjfalskd"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
             </abc:AgileComboBox>
-            <ComboBox>
-                <ComboBoxItem Content="wtf over"/>
+            <abc:AgileButton Content="asdfasdf"/>
+            <abc:AgileComboBox SelectedIndex="0" Margin="5">
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+            </abc:AgileComboBox>
+            <abc:AgileComboBox SelectedIndex="0" Margin="5" Padding="8,4,3,4">
+                <ComboBoxItem Content="Random Combobox Content Item l;aksdjfla;sdkj;alsdfja;lsdkjlaskdfjalsdfk Random Combobox Content Item l;aksdjfla;sdkj;alsdfja;lsdkjlaskdfjalsdfk Random Combobox Content Item l;aksdjfla;sdkj;alsdfja;lsdkjlaskdfjalsdfk Random Combobox Content Item l;aksdjfla;sdkj;alsdfja;lsdkjlaskdfjalsdfk"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+            </abc:AgileComboBox>
+            <abc:AgileComboBox SelectedIndex="0" Margin="5" IsEnabled="False">
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+            </abc:AgileComboBox>
+            <ComboBox Margin="5" IsEditable="False">
+                
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item l;aksdjfla;sdkj;alsdfja;lsdkjlaskdfjalsdfk Random Combobox Content Item l;aksdjfla;sdkj;alsdfja;lsdkjlaskdfjalsdfk Random Combobox Content Item l;aksdjfla;sdkj;alsdfja;lsdkjlaskdfjalsdfk Random Combobox Content Item l;aksdjfla;sdkj;alsdfja;lsdkjlaskdfjalsdfk"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
+                <ComboBoxItem Content="Random Combobox Content Item"/>
             </ComboBox>
 
         </StackPanel>

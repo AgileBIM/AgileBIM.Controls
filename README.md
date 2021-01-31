@@ -49,7 +49,7 @@ Not shown in in the image blow, but the AgileButton is a more simple version of 
 <img src="images/controls2.gif"  />
 
 - **AgileTabControl** (based on TabControl)
-  - MarginHeaderPanel (Dependency Property/Bindable)
+  - HeaderPanelMargin (Dependency Property/Bindable)
   - BorderRadius (Dependency Property/Bindable)
   - TabBlankSpaceContent (Dependency Property/Bindable)
 - **AgileTabItem** (based on TabItem)

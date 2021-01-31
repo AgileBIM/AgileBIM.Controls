@@ -49,9 +49,8 @@ namespace AgileBIM.Controls
             System.IO.StringReader sr = new System.IO.StringReader(decoded);
             System.Xml.XmlReader xr = System.Xml.XmlReader.Create(sr);
             ControlTemplate ct = (ControlTemplate)System.Windows.Markup.XamlReader.Load(xr);
-
-            DefaultStyleKey = ThisControl;
-            Template = ct;
+            this.DefaultStyleKey = ThisControl;
+            this.Template = ct;
         }
 #endif
 

@@ -52,13 +52,14 @@ namespace AgileBIM.Controls
             System.Xml.XmlReader xr = System.Xml.XmlReader.Create(sr);
             ControlTemplate ct = (ControlTemplate)System.Windows.Markup.XamlReader.Load(xr);
 
-            DefaultStyleKey = ThisControl;
-            Template = ct;
-            this.HorizontalContentAlignment = HorizontalAlignment.Center;
-            this.VerticalContentAlignment = VerticalAlignment.Center;
-            this.BorderThickness = new Thickness(1);
-            this.BorderBrush = Brushes.DimGray;
-            this.Background = Brushes.LightGray;
+            this.DefaultStyleKey = ThisControl;
+            this.Template = ct;
+            //this.HorizontalContentAlignment = HorizontalAlignment.Center;
+            //this.VerticalContentAlignment = VerticalAlignment.Center;
+            //this.BorderThickness = new Thickness(1);
+            //this.BorderBrush = Brushes.DimGray;
+            //this.Background = Brushes.LightGray;
+            //this.Style = Application.Current.TryFindResource(typeof(Button)) as Style;
         }
 #endif
 

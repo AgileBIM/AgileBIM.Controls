@@ -35,36 +35,51 @@
                 </Border>
                 <Border BorderThickness="{TemplateBinding BorderThickness}" Background="Transparent" Padding="1"
                                     BorderBrush="Transparent" SnapsToDevicePixels="True" IsHitTestVisible="False">
-                    <TextBlock Padding="0" 
+                    <Grid>
+                        <TextBlock Padding="0" Margin="0" IsHitTestVisible="False"
+                                   IsEnabled="{Binding IsEnabled, RelativeSource={RelativeSource AncestorType=TextBox}}">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">                                                                        
+                                    <Setter Property="Visibility" Value="Collapsed"/>                                                                        
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsEnabled, RelativeSource={RelativeSource AncestorType=TextBox}}" Value="False">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            <Setter Property="VerticalAlignment" Value="Center"/>
+                                            <Setter Property="Text" Value="Disabled"/>
+                                            <Setter Property="FontFamily" Value="Arial"/>
+                                            <Setter Property="Foreground" Value="{Binding WatermarkForeground, RelativeSource={RelativeSource AncestorType=TextBox}}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                        <TextBlock Padding="0" 
                                    IsEnabled="{Binding IsEnabled, RelativeSource={RelativeSource AncestorType=TextBox}}"
                                    IsHitTestVisible="False">
-                        <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}">
-                                <Setter Property="Text" Value="{Binding Watermark, RelativeSource={RelativeSource AncestorType=TextBox}}"/>
-                                <Setter Property="HorizontalAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType=TextBox}}"/>
-                                <Setter Property="VerticalAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType=TextBox}}"/>
-                                <Setter Property="Margin" Value="{Binding Padding, RelativeSource={RelativeSource AncestorType=TextBox}}"/>
-                                <Setter Property="Visibility" Value="Collapsed"/>
-                                <Setter Property="FontFamily" Value="{Binding WatermarkFontFamily, RelativeSource={RelativeSource AncestorType=TextBox}}"/>
-                                <Setter Property="Foreground" Value="{Binding WatermarkForeground, RelativeSource={RelativeSource AncestorType=TextBox}}"/>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding IsEnabled, RelativeSource={RelativeSource AncestorType=TextBox}}" Value="False">
-                                        <Setter Property="Visibility" Value="Visible"/>
-                                        <Setter Property="HorizontalAlignment" Value="Center"/>
-                                        <Setter Property="Text" Value="Disabled"/>
-                                        <Setter Property="FontFamily" Value="Arial"/>
-                                    </DataTrigger>
-                                    <MultiDataTrigger>
-                                        <MultiDataTrigger.Conditions>                                            
-                                            <Condition Binding="{Binding Text, RelativeSource={RelativeSource AncestorType=TextBox}}" Value=""/>
-                                            <Condition Binding="{Binding IsFocused, RelativeSource={RelativeSource AncestorType=TextBox}}" Value="False"/>
-                                        </MultiDataTrigger.Conditions>
-                                        <Setter Property="Visibility" Value="Visible"/>
-                                    </MultiDataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBlock.Style>
-                    </TextBlock>
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Text" Value="{Binding Watermark, RelativeSource={RelativeSource AncestorType=TextBox}}"/>
+                                    <Setter Property="HorizontalAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType=TextBox}}"/>
+                                    <Setter Property="VerticalAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType=TextBox}}"/>
+                                    <Setter Property="Margin" Value="{Binding Padding, RelativeSource={RelativeSource AncestorType=TextBox}}"/>
+                                    <Setter Property="Visibility" Value="Hidden"/>
+                                    <Setter Property="FontFamily" Value="{Binding WatermarkFontFamily, RelativeSource={RelativeSource AncestorType=TextBox}}"/>
+                                    <Setter Property="Foreground" Value="{Binding WatermarkForeground, RelativeSource={RelativeSource AncestorType=TextBox}}"/>
+                                    <Style.Triggers>                                        
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding Text, RelativeSource={RelativeSource AncestorType=TextBox}}" Value=""/>
+                                                <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource AncestorType=TextBox}}" Value="True"/>
+                                                <Condition Binding="{Binding IsFocused, RelativeSource={RelativeSource AncestorType=TextBox}}" Value="False"/>
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </MultiDataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Grid>
                 </Border>
                 <Popup x:Name="errMessage" 
                        Placement="Bottom"    

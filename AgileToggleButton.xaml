@@ -73,7 +73,6 @@
                     <Setter Property="Background" TargetName="border" Value="{Binding BackgroundHover, RelativeSource={RelativeSource AncestorType=ToggleButton}}"/>
                     <Setter Property="BorderBrush" TargetName="border" Value="{Binding BorderBrushHover, RelativeSource={RelativeSource AncestorType=ToggleButton}}"/>
                     <Setter Property="TextBlock.Foreground" TargetName="contentPresenter" Value="{Binding ForegroundHover, RelativeSource={RelativeSource AncestorType=ToggleButton}}"/>
-                    <Setter Property="BorderThickness" Value="12"/>
                 </Trigger>
                 <Trigger Property="IsPressed" Value="True">
                     <Setter Property="Background" TargetName="border" Value="{Binding BackgroundPressed, RelativeSource={RelativeSource AncestorType=ToggleButton}}"/>

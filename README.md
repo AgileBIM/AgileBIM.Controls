@@ -1,6 +1,8 @@
 # AgileBIM.Controls
 This is a project that was created to consolidate the random controls I've had to make because WPF didn't natively provide them or at least not to the degree I needed them. Your welcome to use them for whatever purpose you want. In many cases these purely expose properties that were obscured by the default templates, which makes your setup a bit more, but very minimalistic compared to what would normally have to be done to access obscured properties.
 
+**Note:** controls stating they "requires BasedOn Styling" means it has a Dynamically loaded ControlTemplate and you will have to include the BasedOn decorator pointed as the base type in your styles to restore basic styling like margin and alignments. For example, the **AgileButton** would need a style BasedOn **Button**. From there you can go ahead and style them up any way you want, just reestablishes the baseline.
+
 ### Available Controls
 
 - **AgileTextBox** (based on TextBox Control)
@@ -9,6 +11,20 @@ This is a project that was created to consolidate the random controls I've had t
   - Watermark (Dependency Property/Bindable)
   - WatermarkColor (Dependency Property/Bindable)
   - WatermarkFontFamily (Dependency Property/Bindable)
+  - ValidationPopupBorderRadius (Dependency Property/Bindable)
+  - ValidationMessageMargin (Dependency Property/Bindable)
+  - ValidationPopupIsOpen (Dependency Property/Bindable)
+    - Can be operated manually for custom validation
+  - ValidationPopupBorderBrush (Dependency Property/Bindable)
+  - ValidationPopupBackground (Dependency Property/Bindable)
+  - ValidationRegexString (Dependency Property/Bindable)
+    - Don't provide this if you want to operate manually
+    - Needs complete regex including starts ^ and stops $ characters
+  - ValidateValueAsTrimmed (Dependency Property/Bindable)
+    - Defaults to true
+    - Set false if leading/trailing spaces should matter to your regex
+  - ValidationMessage (Dependency Property/Bindable)
+  - Text property change overridden to be by value instead of lost focus
 - **AgileColorPicker** (based on Border Control)
   - SelectedBrush (Dependency Property/Bindable)
   - SelectedColor (Non DP/Non Bindable configured to read/update SelectedBrush)
@@ -22,7 +38,7 @@ The screenshot below are slightly deceptive because the first AgileColorPicker i
 
 ![](images/controls1.png)
 
-- **AgileToggleButton** (based on ToggleButton Control)
+- **AgileToggleButton** (based on ToggleButton Control, requires BasedOn Styling)
   - BorderRadius (Dependency Property/Bindable)
   - BackgroundChecked (Dependency Property/Bindable)
   - BackgroundDisabled (Dependency Property/Bindable)
@@ -34,7 +50,7 @@ The screenshot below are slightly deceptive because the first AgileColorPicker i
   - BorderBrushPressed (Dependency Property/Bindable)
   - CheckVisibility (Dependency Property/Bindable)
 
-- **AgileButton** (based on Button Control)
+- **AgileButton** (based on Button Control, requires BasedOn Styling)
   - BorderRadius (Dependency Property/Bindable)
   - BackgroundDisabled (Dependency Property/Bindable)
   - BackgroundHover (Dependency Property/Bindable)
@@ -48,11 +64,11 @@ Not shown in in the image blow, but the AgileButton is a more simple version of 
 
 <img src="images/controls2.gif"  />
 
-- **AgileTabControl** (based on TabControl)
+- **AgileTabControl** (based on TabControl, requires BasedOn Styling)
   - HeaderPanelMargin (Dependency Property/Bindable)
   - BorderRadius (Dependency Property/Bindable)
   - TabBlankSpaceContent (Dependency Property/Bindable)
-- **AgileTabItem** (based on TabItem)
+- **AgileTabItem** (based on TabItem, requires BasedOn Styling)
   - TabBackground (Dependency Property/Bindable)
   - TabBackgroundHover (Dependency Property/Bindable)
   - TabBackgroundSelected (Dependency Property/Bindable)
@@ -60,13 +76,13 @@ Not shown in in the image blow, but the AgileButton is a more simple version of 
   - TabBorderBrushHover (Dependency Property/Bindable)
   - TabBorderBrushSelected (Dependency Property/Bindable)
   - TabIsRotated (Dependency Property/Bindable)
-    - -90 flip of the Tab not the Content
+    - -90 flips of the Tab not the Content
   - TabFontSize (Dependency Property/Bindable)
     - Prevents it from propagating into the children
   - TabFontWeight (Dependency Property/Bindable)
     - Prevents it from propagating into the children
   - TabSelectedMargin (Dependency Property/Bindable)
-    - Typically offsets tab towards content to break content border
+    - Typically used to offset tab towards content to break content border
   - TabBorderRadius (Dependency Property/Bindable)
   - TabBorderThickness (Dependency Property/Bindable)
 

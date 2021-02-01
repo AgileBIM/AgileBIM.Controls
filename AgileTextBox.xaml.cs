@@ -100,9 +100,9 @@ namespace AgileBIM.Controls
         public static readonly DependencyProperty BorderRadiusProperty =
             DependencyProperty.Register("BorderRadius", typeof(CornerRadius), typeof(AgileTextBox), new PropertyMetadata(new CornerRadius(0)));
 
-        public Brush BorderBrushFocused { get { return (Brush)GetValue(FocusedBorderProperty); } set { SetValue(FocusedBorderProperty, value); } }
-        public static readonly DependencyProperty FocusedBorderProperty =
-            DependencyProperty.Register("FocusedBorder", typeof(Brush), typeof(AgileTextBox), new PropertyMetadata(new BrushConverter().ConvertFromString("#FF569DE5") as Brush));
+        public Brush BorderBrushFocused { get { return (Brush)GetValue(BorderBrushFocusedProperty); } set { SetValue(BorderBrushFocusedProperty, value); } }
+        public static readonly DependencyProperty BorderBrushFocusedProperty =
+            DependencyProperty.Register("BorderBrushFocused", typeof(Brush), typeof(AgileTextBox), new PropertyMetadata(new BrushConverter().ConvertFromString("#FF569DE5") as Brush));
 
 
 

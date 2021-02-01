@@ -22,7 +22,7 @@
                        Margin="1"
                        PopupAnimation="{Binding PopupAnimation, RelativeSource={RelativeSource AncestorType=ComboBox}}"                       
                        Placement="{Binding PopupPlacement, RelativeSource={RelativeSource AncestorType=ComboBox}}">
-                    <Border x:Name="DropDownBorder"                             
+                    <Border x:Name="DropDownBorder"
                             BorderBrush="{Binding PopupBorderBrush, RelativeSource={RelativeSource AncestorType=ComboBox}}"
                             BorderThickness="{Binding PopupBorderThickness, RelativeSource={RelativeSource AncestorType=ComboBox}}" 
                             CornerRadius="{Binding PopupBorderRadius, RelativeSource={RelativeSource AncestorType=ComboBox}}"

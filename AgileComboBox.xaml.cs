@@ -51,8 +51,8 @@ namespace AgileBIM.Controls
             System.IO.StringReader sr = new System.IO.StringReader(decoded);
             System.Xml.XmlReader xr = System.Xml.XmlReader.Create(sr);
             ControlTemplate ct = (ControlTemplate)System.Windows.Markup.XamlReader.Load(xr);
-            this.DefaultStyleKey = ThisControl;
             this.Template = ct;
+            this.DefaultStyleKey = ThisControl;
         }
 #endif
 
@@ -127,7 +127,7 @@ namespace AgileBIM.Controls
 
         public Thickness PopupContentsMargin { get { return (Thickness)GetValue(PopupContentsMarginProperty); } set { SetValue(PopupContentsMarginProperty, value); } }
         public static readonly DependencyProperty PopupContentsMarginProperty =
-            DependencyProperty.Register("PopupContentsMargin", typeof(Thickness), ThisControl, new PropertyMetadata(new Thickness(0)));
+            DependencyProperty.Register("PopupContentsMargin", typeof(Thickness), ThisControl, new PropertyMetadata(new Thickness(2,2,0,2)));
 
         public Brush PopupBackground { get { return (Brush)GetValue(PopupBackgroundProperty); } set { SetValue(PopupBackgroundProperty, value); } }
         public static readonly DependencyProperty PopupBackgroundProperty =

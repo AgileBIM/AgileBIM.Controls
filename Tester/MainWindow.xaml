@@ -4,17 +4,18 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:Tester"
-    xmlns:abc="clr-namespace:AgileBIM.Controls;assembly=AgileBIM.Controls"        
+    xmlns:abc="clr-namespace:AgileBIM.Controls;assembly=AgileBIM.Controls"
     x:Class="Tester.MainWindow"
     mc:Ignorable="d"
     Background="White"
-    Title="AgileBIM Controls Tester" Height="800" Width="350">
+    Title="AgileBIM Controls Tester" Height="900" Width="350">
     <Window.Resources>
-        <Style TargetType="{x:Type abc:AgileButton}" BasedOn="{StaticResource {x:Type Button}}"/>
-        <Style TargetType="{x:Type abc:AgileToggleButton}" BasedOn="{StaticResource {x:Type ToggleButton}}"/>
-        <Style TargetType="{x:Type abc:AgileComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}"/>
-        <Style TargetType="{x:Type abc:AgileTabControl}" BasedOn="{StaticResource {x:Type TabControl}}"/>
-        <Style TargetType="{x:Type abc:AgileTabItem}" BasedOn="{StaticResource {x:Type TabItem}}"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/AgileBIM.Controls;component/AgileDefaultStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -25,7 +26,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        
+
 
 
         <abc:AgileTabControl TabStripPlacement="Right" BorderThickness="4" BorderBrush="Black" BorderRadius="12,0,0,12" Margin="12" HeaderPanelMargin="0,18,0,0" Background="Yellow" Height="200">
@@ -33,7 +34,7 @@
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="also a"/><LineBreak/><Run Text="content"/><LineBreak/><Run Text="area"/></TextBlock>
             </abc:AgileTabControl.TabBlankSpaceContent>
             <abc:AgileTabItem Header="Square" TabBackgroundSelected="Gray" TabSelectedMargin="-4,0,0,0" BorderThickness="1" BorderBrush="LightGray" Background="AliceBlue">
-                <Button Content="DAMN"/>
+                <Button Content="BIG Button"/>
             </abc:AgileTabItem>
             <abc:AgileTabItem Header="Round" TabBorderThickness="0,2,2,2" Padding="15,2" TabBorderRadius="0,8,8,0" TabSelectedMargin="0,0,0,0" TabBackgroundSelected="Blue" TabBackground="Green" Background="Blue"/>
             <abc:AgileTabItem Header="Rotated" TabIsRotated="True" HorizontalAlignment="Left" TabBorderRadius="0,0,0,10" TabBorderThickness="4,0,0,4" TabSelectedMargin="-4,0,0,0" TabBorderBrushSelected="Black" TabBorderBrush="Black" Padding="8,0,8,5" />
@@ -50,15 +51,15 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <abc:AgileTextBox Watermark="This has no value" WatermarkFontFamily="Arial" BorderRadius="5" Margin="5,0,0,0" 
-                                  ValidationPopupBorderThickness="0"
-                                  ValidationRegexString="*" 
-                                  ValidationMessage="Do stuff here"/>
+                <abc:AgileTextBox Watermark="This has no value" WatermarkFontFamily="Arial" BorderRadius="5" Margin="5,0,0,0"
+                                    ValidationPopupBorderThickness="0"
+                                    ValidationRegexString="*"
+                                    ValidationMessage="Do stuff here"/>
                 <abc:AgileTextBox Watermark="This watermark" WatermarkFontFamily="Arial" BorderRadius="5" Margin="5,0" Grid.Column="1" Text="This one has a value"
-                                  ValidationMessage="What you have entered is not a valid number"
-                                  ValidateValueAsTrimmed="True"                                  
-                                  IsReadOnly="True"
-                                  ValidationRegexString="^\d*\.?\d*$"/>
+                                    ValidationMessage="What you have entered is not a valid number"
+                                    ValidateValueAsTrimmed="True"
+                                    IsReadOnly="True"
+                                    ValidationRegexString="^\d*\.?\d*$"/>
             </Grid>
             <TextBlock Text="Disabled Versions" HorizontalAlignment="Center"/>
             <Grid Margin="0,0,0,10">
@@ -91,151 +92,165 @@
             <Separator Margin="5"/>
             <TextBlock Text="Toggle Buttons" HorizontalAlignment="Center" Margin="5"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <abc:AgileToggleButton Background="Orange" 
-                                       BorderBrush="Red"
-                                       
-                                       BackgroundChecked="Green" 
-                                       BorderBrushChecked="Black"
-                                       
-                                       BackgroundHover="Aqua"
-                                       BorderBrushHover="LightGreen"
-                                       
-                                       BackgroundPressed="LightGray"
-                                       BorderBrushPressed="Teal"                                       
-                                       
-                                       ForegroundHover="Blue"
-                                       ForegroundPressed="Green"
-                                       
-                                       Foreground="Yellow"
-                                       ForegroundChecked="White"
-                                       BorderRadius="5"
-                                       BorderThickness="3"
-                                       Width="50"
-                                       Margin="5,0"
-                                       Content="{Binding IsChecked, RelativeSource={RelativeSource Self}}"/>
+                <abc:AgileToggleButton Background="Orange"
+                                         BorderBrush="Red"
 
-                <abc:AgileToggleButton Background="Orange" 
-                                       BorderBrush="Red"
-                                       Foreground="Black"
-                                       BackgroundChecked="Green" 
-                                       BorderBrushChecked="Black"
-                                       
-                                       BackgroundHover="Aqua"
-                                       BorderBrushHover="LightGreen"
-                                       
-                                       BackgroundPressed="LightGray"
-                                       BorderBrushPressed="Teal"                                       
-                                       
-                                       BorderRadius="12"
-                                       BorderThickness="3"
-                                       Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
-                                       Margin="5,0"
-                                       CheckVisibility="Visible"/>
+                                         BackgroundChecked="Green"
+                                         BorderBrushChecked="Black"
 
-                <abc:AgileToggleButton Background="Orange" 
-                                       BorderBrush="Red"
-                                       Foreground="Black"
-                                       BackgroundChecked="Green" 
-                                       BorderBrushChecked="Black"
-                                       
-                                       BackgroundHover="Aqua"
-                                       BorderBrushHover="LightGreen"
-                                       
-                                       BackgroundPressed="LightGray"
-                                       BorderBrushPressed="Teal"                                       
-                                       IsChecked="True"
-                                       BorderRadius="0"
-                                       BorderThickness="3"
-                                       Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
-                                       Margin="5,0"                                       
-                                       CheckVisibility="Visible"/>
+                                         BackgroundHover="Aqua"
+                                         BorderBrushHover="LightGreen"
 
-                <abc:AgileToggleButton Background="Orange" 
-                                       BorderBrush="Red"
-                                       Foreground="Black"
-                                       BackgroundChecked="Green" 
-                                       BorderBrushChecked="Black"
-                                       
-                                       BackgroundHover="Aqua"
-                                       BorderBrushHover="LightGreen"
-                                       
-                                       BackgroundPressed="LightGray"
-                                       BorderBrushPressed="Teal"                                       
-                                       IsChecked="True"
-                                       BorderRadius="0"
-                                       BorderThickness="3"
-                                       Width="50"
-                                       Margin="5,0"
-                                       Content="{Binding IsChecked, RelativeSource={RelativeSource Self}}"/>
+                                         BackgroundPressed="LightGray"
+                                         BorderBrushPressed="Teal"
 
-                <abc:AgileToggleButton Background="Orange" 
-                                       BorderBrush="Red"
-                                       Foreground="Black"
-                                       BackgroundChecked="Green" 
-                                       BorderBrushChecked="Black"
-                                       
-                                       BackgroundHover="Aqua"
-                                       BorderBrushHover="LightGreen"
-                                       
-                                       BackgroundPressed="LightGray"
-                                       BorderBrushPressed="Teal"                                       
-                                       IsEnabled="False"
-                                       BorderRadius="5"
-                                       BorderThickness="3"
-                                       Padding="10,2"
-                                       Margin="5,0"
-                                       Content="Disabled"/>
+                                         ForegroundHover="Blue"
+                                         ForegroundPressed="Green"
+
+                                         Foreground="Yellow"
+                                         ForegroundChecked="White"
+                                         BorderRadius="5"
+                                         BorderThickness="3"
+                                         Width="50"
+                                         Margin="5,0"
+                                         Content="{Binding IsChecked, RelativeSource={RelativeSource Self}}"/>
+
+                <abc:AgileToggleButton Background="Orange"
+                                         BorderBrush="Red"
+                                         Foreground="Black"
+                                         BackgroundChecked="Green"
+                                         BorderBrushChecked="Black"
+
+                                         BackgroundHover="Aqua"
+                                         BorderBrushHover="LightGreen"
+
+                                         BackgroundPressed="LightGray"
+                                         BorderBrushPressed="Teal"
+
+                                         BorderRadius="12"
+                                         BorderThickness="3"
+                                         Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
+                                         Margin="5,0"
+                                         CheckVisibility="Visible"/>
+
+                <abc:AgileToggleButton Background="Orange"
+                                         BorderBrush="Red"
+                                         Foreground="Black"
+                                         BackgroundChecked="Green"
+                                         BorderBrushChecked="Black"
+
+                                         BackgroundHover="Aqua"
+                                         BorderBrushHover="LightGreen"
+
+                                         BackgroundPressed="LightGray"
+                                         BorderBrushPressed="Teal"
+                                         IsChecked="True"
+                                         BorderRadius="0"
+                                         BorderThickness="3"
+                                         Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
+                                         Margin="5,0"
+                                         CheckVisibility="Visible"/>
+
+                <abc:AgileToggleButton Background="Orange"
+                                         BorderBrush="Red"
+                                         Foreground="Black"
+                                         BackgroundChecked="Green"
+                                         BorderBrushChecked="Black"
+
+                                         BackgroundHover="Aqua"
+                                         BorderBrushHover="LightGreen"
+
+                                         BackgroundPressed="LightGray"
+                                         BorderBrushPressed="Teal"
+                                         IsChecked="True"
+                                         BorderRadius="0"
+                                         BorderThickness="3"
+                                         Width="50"
+                                         Margin="5,0"
+                                         Content="{Binding IsChecked, RelativeSource={RelativeSource Self}}"/>
+
+                <abc:AgileToggleButton Background="Orange"
+                                         BorderBrush="Red"
+                                         Foreground="Black"
+                                         BackgroundChecked="Green"
+                                         BorderBrushChecked="Black"
+
+                                         BackgroundHover="Aqua"
+                                         BorderBrushHover="LightGreen"
+
+                                         BackgroundPressed="LightGray"
+                                         BorderBrushPressed="Teal"
+                                         IsEnabled="False"
+                                         BorderRadius="5"
+                                         BorderThickness="3"
+                                         Padding="10,2"
+                                         Margin="5,0"
+                                         Content="Disabled"/>
             </StackPanel>
             <TextBlock Text="Regular Buttons" HorizontalAlignment="Center" Margin="10"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <abc:AgileButton Background="Orange" 
-                                 BorderBrush="Red"
-                                 Foreground="Black"                                       
-                                 BackgroundHover="Aqua"
-                                 BorderBrushHover="LightGreen"                                       
-                                 BackgroundPressed="LightGray"
-                                 BorderBrushPressed="Teal"                                       
-                                 BorderRadius="5"
-                                 BorderThickness="3"
-                                 Padding="10,2"
-                                 Margin="5,0"
-                                 ForegroundHover="Blue"
-                                 ForegroundPressed="Green"
-                                 Content="Normal Button"/>
-                <abc:AgileButton Background="Orange" 
-                                 BorderBrush="Red"
-                                 Foreground="Black"                                       
-                                 BackgroundHover="Aqua"
-                                 BorderBrushHover="LightGreen"
-                                 IsEnabled="False"
-                                 BackgroundPressed="LightGray"
-                                 BorderBrushPressed="Teal"                                       
-                                 BorderRadius="5"
-                                 BorderThickness="3"
-                                 Padding="10,2"
-                                 Margin="5,0"                                 
-                                 Content="Normal Disabled"/>
+                <abc:AgileButton Background="Orange"
+                                   BorderBrush="Red"
+                                   Foreground="Black"
+                                   BackgroundHover="Aqua"
+                                   BorderBrushHover="LightGreen"
+                                   BackgroundPressed="LightGray"
+                                   BorderBrushPressed="Teal"
+                                   BorderRadius="5"
+                                   BorderThickness="3"
+                                   Padding="10,2"
+                                   Margin="5,0"
+                                   ForegroundHover="Blue"
+                                   ForegroundPressed="Green"
+                                   Content="V2 Version"/>
+                <abc:AgileButton Background="Orange"
+                                   BorderBrush="Red"
+                                   Foreground="Black"
+                                   BackgroundHover="Aqua"
+                                   BorderBrushHover="LightGreen"
+                                   BackgroundPressed="LightGray"
+                                   BorderBrushPressed="Teal"
+                                   BorderRadius="5"
+                                   BorderThickness="3"
+                                   Padding="10,2"
+                                   Margin="5,0"
+                                   ForegroundHover="Blue"
+                                   ForegroundPressed="Green"
+                                   Content="Normal"/>
+                <abc:AgileButton Background="Orange"
+                                   BorderBrush="Red"
+                                   Foreground="Black"
+                                   BackgroundHover="Aqua"
+                                   BorderBrushHover="LightGreen"
+                                   IsEnabled="False"
+                                   BackgroundPressed="LightGray"
+                                   BorderBrushPressed="Teal"
+                                   BorderRadius="5"
+                                   BorderThickness="3"
+                                   Padding="10,2"
+                                   Margin="5,0"
+                                   Content="Disabled"/>
             </StackPanel>
             <TextBlock Text="Combo Boxes" HorizontalAlignment="Center" Margin="6"/>
             <abc:AgileComboBox BorderBrushHover="DimGray"
-                               BackgroundHover="Gainsboro"
-                               ForegroundHover="Black"
-                               
-                               Background="Gray"
-                               Foreground="White"
-                               BorderBrush="Black"
-                               BorderThickness="3"
-                               BorderRadius="8"
-                               
-                               PopupBorderThickness="5"
-                               PopupBorderRadius="10"
-                               PopupContentsMargin="5,5,0,5"                               
-                               PopupPlacement="Center"
-                               PopupScrollBarBrush="Black"
-                               PopupBackground="DimGray"      
-                               PopupBorderBrush="Black"
-                               
-                               SelectedIndex="0" Margin="5">
+                                 BackgroundHover="Gainsboro"
+                                 ForegroundHover="Black"
+
+                                 Background="Gray"
+                                 Foreground="White"
+                                 BorderBrush="Black"
+                                 BorderThickness="3"
+                                 BorderRadius="8"
+
+                                 PopupBorderThickness="5"
+                                 PopupBorderRadius="10"
+                                 PopupContentsMargin="5,5,0,5"
+                                 PopupPlacement="Center"
+                                 PopupScrollBarBrush="Black"
+                                 PopupBackground="DimGray"
+                                 PopupBorderBrush="Black"
+
+                                 SelectedIndex="0" Margin="5">
                 <ComboBoxItem Content="Random Combobox Content Item asldkfjasdlfj asldkfjalskdjfalskd"/>
                 <ComboBoxItem Content="Random Combobox Content Item"/>
                 <ComboBoxItem Content="Random Combobox Content Item"/>
@@ -282,19 +297,18 @@
                 <ComboBoxItem Content="Random Combobox Content Item"/>
                 <ComboBoxItem Content="Random Combobox Content Item"/>
                 <ComboBoxItem Content="Random Combobox Content Item"/>
-            </abc:AgileComboBox>            
+            </abc:AgileComboBox>
             <abc:AgileComboBox SelectedIndex="0" Margin="5" IsEnabled="False">
                 <ComboBoxItem Content="Random Combobox Content Item"/>
                 <ComboBoxItem Content="Random Combobox Content Item"/>
             </abc:AgileComboBox>
 
-
         </StackPanel>
 
 
 
-        <!--<abc:AgileTabControl Grid.Row="4" BorderBrush="Blue" BorderThickness="5" Background="Yellow" 
-                             BorderRadius="5" SelectedIndex="3" Visibility="Visible" MinHeight="200" >
+        <abc:AgileTabControl Grid.Row="4" BorderBrush="Blue" BorderThickness="5" Background="Yellow"
+                               BorderRadius="5" SelectedIndex="3" Visibility="Visible" MinHeight="200" >
             <abc:AgileTabControl.Resources>
                 <Style x:Key="rotatedTab" TargetType="{x:Type abc:AgileTabItem}">
                     <Setter Property="Background" Value="Gray"/>
@@ -340,7 +354,7 @@
             <abc:AgileTabItem Header="smll" Style="{DynamicResource rotatedTab}"/>
             <abc:AgileTabItem Header="Tab1" Style="{DynamicResource horzTab}"/>
 
-        </abc:AgileTabControl>-->
+        </abc:AgileTabControl>
     </Grid>
 
 

@@ -1,7 +1,19 @@
 # AgileBIM.Controls
 This is a project that was created to consolidate the random controls I've had to make because WPF didn't natively provide them or at least not to the degree I needed them. Your welcome to use them for whatever purpose you want. In many cases these purely expose properties that were obscured by the default templates, which makes your setup a bit more, but very minimalistic compared to what would normally have to be done to access obscured properties.
 
-**Note:** controls stating they "requires BasedOn Styling" means it has a Dynamically loaded ControlTemplate and you will have to include the BasedOn decorator pointed as the base type in your styles to restore basic styling like margin and alignments. For example, the **AgileButton** would need a style BasedOn **Button**. From there you can go ahead and style them up any way you want, just reestablishes the baseline.
+To use these controls, you will need to include a reference to the `AgileBIM.Controls.dll` in your project and import the required ResourceDictionary.
+```xaml
+<Window.Resources>
+    <ResourceDictionary>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="pack://application:,,,/AgileBIM.Controls;component/AgileDefaultStyles.xaml" />
+        </ResourceDictionary.MergedDictionaries>
+        ... your styles and templates here ...
+    </ResourceDictionary>
+</Window.Resources>
+```
+
+
 
 ### Available Controls
 
@@ -38,7 +50,7 @@ The screenshot below are slightly deceptive because the first AgileColorPicker i
 
 ![](images/controls1.png)
 
-- **AgileToggleButton** (based on ToggleButton Control, requires BasedOn Styling)
+- **AgileToggleButton** (based on ToggleButton Control)
   - BorderRadius (Dependency Property/Bindable)
   - BackgroundChecked (Dependency Property/Bindable)
   - BackgroundDisabled (Dependency Property/Bindable)
@@ -50,7 +62,7 @@ The screenshot below are slightly deceptive because the first AgileColorPicker i
   - BorderBrushPressed (Dependency Property/Bindable)
   - CheckVisibility (Dependency Property/Bindable)
 
-- **AgileButton** (based on Button Control, requires BasedOn Styling)
+- **AgileButton** (based on Button Control)
   - BorderRadius (Dependency Property/Bindable)
   - BackgroundDisabled (Dependency Property/Bindable)
   - BackgroundHover (Dependency Property/Bindable)
@@ -58,17 +70,16 @@ The screenshot below are slightly deceptive because the first AgileColorPicker i
   - BorderBrushDisabled (Dependency Property/Bindable)
   - BorderBrushHover (Dependency Property/Bindable)
   - BorderBrushPressed (Dependency Property/Bindable)
-  - Not shown in image below, but has similar property exposures/effects
 
-Not shown in in the image blow, but the AgileButton is a more simple version of the featured AgileToggleButton. The displayed styles are not imbedded on the controls, they are just completely random color values that would provide good contrast of all the state colors that have been exposed. The True/False ones are just binding the Content property to the IsChecked property and the ones with the actual check/x-mark are an optionally visible path for simulating a checkbox; which can be useful since standard checkboxes don't really scale. Note that ToggleButtons do not support 3-State checking.
+Not shown in in the image blow, but the AgileButton is a more simple version of the featured AgileToggleButton. The displayed styles shown are not imbedded on the controls, they are just completely random color values that would provide good contrast of all the state colors that have been exposed. The True/False ones are just binding the Content property to the IsChecked property and the ones with the actual check/x-mark are an optionally visible path for simulating a checkbox; which can be useful since standard checkboxes don't really scale. Note that ToggleButtons do not support 3-State checking.
 
 <img src="images/controls2.gif"  />
 
-- **AgileTabControl** (based on TabControl, requires BasedOn Styling)
+- **AgileTabControl** (based on TabControl)
   - HeaderPanelMargin (Dependency Property/Bindable)
   - BorderRadius (Dependency Property/Bindable)
   - TabBlankSpaceContent (Dependency Property/Bindable)
-- **AgileTabItem** (based on TabItem, requires BasedOn Styling)
+- **AgileTabItem** (based on TabItem)
   - TabBackground (Dependency Property/Bindable)
   - TabBackgroundHover (Dependency Property/Bindable)
   - TabBackgroundSelected (Dependency Property/Bindable)

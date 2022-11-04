@@ -1,18 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 // Further research needs to be done on the memory implications of this design
 // https://agsmith.wordpress.com/2008/04/07/propertydescriptor-addvaluechanged-alternative/
@@ -21,13 +13,14 @@ using System.Windows.Shapes;
 
 namespace AgileBIM.Controls
 {
-    public partial class AgileTextBox : TextBox
-    { 
-        public AgileTextBox()
+    public class AgileTextBox : TextBox
+    {
+        new protected void OnInitialized(EventArgs e)
         {   
-            InitializeComponent();
-            DependencyPropertyDescriptor.FromProperty(UIElement.IsFocusedProperty, typeof(AgileTextBox))?.AddValueChanged(this, (s, e) => revalidate());
+            base.OnInitialized(e);
+            DependencyPropertyDescriptor.FromProperty(UIElement.IsFocusedProperty, typeof(AgileTextBox))?.AddValueChanged(this, (s, evnt) => ReValidate());
         }
+
         static AgileTextBox()
         {
             TextBox.TextProperty.OverrideMetadata(typeof(AgileTextBox), new FrameworkPropertyMetadata(
@@ -39,7 +32,7 @@ namespace AgileBIM.Controls
                 UpdateSourceTrigger.PropertyChanged));
         }
 
-        private void revalidate()
+        private void ReValidate()
         {
             AgileTextBox.ValidationPopupController(this, this.Text);
         }
@@ -109,7 +102,7 @@ namespace AgileBIM.Controls
 
         public CornerRadius ValidationPopupBorderRadius { get { return (CornerRadius)GetValue(ValidationPopupBorderRadiusProperty); } set { SetValue(ValidationPopupBorderRadiusProperty, value); } }
         public static readonly DependencyProperty ValidationPopupBorderRadiusProperty =
-            DependencyProperty.Register("ValidationPopupBorderRadius", typeof(CornerRadius), typeof(AgileTextBox), new PropertyMetadata(new CornerRadius(0,0,6,6)));
+            DependencyProperty.Register("ValidationPopupBorderRadius", typeof(CornerRadius), typeof(AgileTextBox), new PropertyMetadata(new CornerRadius(0, 0, 6, 6)));
 
         public Thickness ValidationPopupBorderThickness { get { return (Thickness)GetValue(ValidationPopupBorderThicknessProperty); } set { SetValue(ValidationPopupBorderThicknessProperty, value); } }
         public static readonly DependencyProperty ValidationPopupBorderThicknessProperty =

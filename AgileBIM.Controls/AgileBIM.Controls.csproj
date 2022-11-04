@@ -1,8 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <OutputType>WinExe</OutputType>
         <TargetFramework>net48</TargetFramework>
-        <RootNamespace>Tester</RootNamespace>
+        <RootNamespace>AgileBIM.Controls</RootNamespace>
         <UseWPF>true</UseWPF>
         <LangVersion>latest</LangVersion>
     </PropertyGroup>
@@ -29,26 +28,18 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Page Include="App.xaml"/>
+        <Reference Include="PresentationCore" />
+        <Reference Include="PresentationFramework" />
+        <Reference Include="System" />
+        <Reference Include="System.Core" />
+        <Reference Include="System.Drawing" />
+        <Reference Include="System.Xml.Linq" />
+        <Reference Include="System.Data.DataSetExtensions" />
+        <Reference Include="Microsoft.CSharp" />
+        <Reference Include="System.Data" />
+        <Reference Include="System.Net.Http" />
+        <Reference Include="System.Xml" />
+        <Reference Include="WindowsBase" />
     </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\AgileBIM.Controls\AgileBIM.Controls.csproj"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Reference Include="PresentationCore"/>
-        <Reference Include="PresentationFramework"/>
-        <Reference Include="System"/>
-        <Reference Include="System.Core"/>
-        <Reference Include="System.Drawing"/>
-        <Reference Include="System.Xml.Linq"/>
-        <Reference Include="System.Data.DataSetExtensions"/>
-        <Reference Include="Microsoft.CSharp"/>
-        <Reference Include="System.Data"/>
-        <Reference Include="System.Net.Http"/>
-        <Reference Include="System.Xml"/>
-        <Reference Include="WindowsBase"/>
-    </ItemGroup>
-
+	
 </Project>
